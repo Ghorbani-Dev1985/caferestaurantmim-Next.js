@@ -10,6 +10,7 @@
       "@/Api/*" : ["src/Api/*"],
       "@/Styles/*" : ["/src/Styles/*"],
       "@/Images/*" : ["/src/Assets/Images/*"],
-    }
-  }
+      "@/Fonts/*" : ["/src/Assets/Fonts/*"],
+    },
+  },
 }

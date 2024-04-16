@@ -1,3 +1,29 @@
+@import './font.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base{
+    * {
+        @apply p-0 m-0 box-border;
+      }
+      html{
+        @apply scroll-smooth;
+        direction: rtl;
+      }
+      li{
+        @apply list-none
+      }
+      body {
+        @apply text-secondary bg-white h-full font-ShabnamFD text-lg overflow-x-hidden scroll-smooth scrollbar scrollbar-thumb-primary dark:scrollbar-thumb-gray-700 scrollbar-track-gray-100 dark:scrollbar-track-gray-400;
+      }
+}
+
+@layer utilities {
+    .flex-center{
+      @apply flex justify-center items-center
+    }
+    .flex-between{
+      @apply flex justify-between items-center
+    }   
+  }
