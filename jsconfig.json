@@ -8,9 +8,9 @@
       "@/UI/*" : ["src/UI/*"],
       "@/server/*" : ["src/Server/*"],
       "@/Api/*" : ["src/Api/*"],
-      "@/Styles/*" : ["/src/Styles/*"],
-      "@/Images/*" : ["/src/Assets/Images/*"],
-      "@/Fonts/*" : ["/src/Assets/Fonts/*"],
+      "@/Styles/*" : ["src/Styles/*"],
+      "@/Images/*" : ["src/Assets/Images/*"],
+      "@/Fonts/*" : ["src/Assets/Fonts/*"],
     },
   },
 }
