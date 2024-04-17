@@ -1,5 +1,6 @@
 import React from "react";
-import { Image, Link } from "next/link";
+import Link from "next/link";
+import Image from "next/image";
 import TopFooter from "@/Images/Footer/topFooter.webp";
 import Logo from "@/Images/Logo/logo2.webp";
 import { BiMobileAlt } from "react-icons/bi";

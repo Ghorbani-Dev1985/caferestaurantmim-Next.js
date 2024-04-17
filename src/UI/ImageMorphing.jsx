@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from "next/link";
 const MorphingValues = [
     {
         id: 1,

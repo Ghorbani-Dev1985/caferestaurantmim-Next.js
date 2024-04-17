@@ -5,8 +5,10 @@ import AboutUS from '@/Features/Home/AboutUS'
 import BlogsList from "@/Features/Home/BlogsList";
 import ImageGallery from "@/UI/ImageGallery";
 import { AboutUsItems } from "./AboutUs";
+import Layout from "@/Containers/Layout";
 const HomePage = () => {
     return (
+        <Layout>
         <main className='min-h-screen'>
         <Slider />
         <section className='container'>
@@ -18,6 +20,7 @@ const HomePage = () => {
         <AboutUS />
          <ImageGallery />
         </main>
+        </Layout>
      );
 }
  
