@@ -3,8 +3,10 @@ import AboutUsImg from "@/Images/Other/aboutUs.webp";
 import { AddressItems } from "@/UI/Footer";
 import AddressMap from "@/UI/AddressMap";
 import ImageMorphing from "@/UI/ImageMorphing";
+import Layout from "@/Containers/Layout";
 const AboutUs = () => {
   return (
+    <Layout>
     <section className="container relative mt-6">
       <AboutUsItems>
         <div className="max-w-lg space-y-8 mx-auto">
@@ -15,6 +17,7 @@ const AboutUs = () => {
         <AddressMap style="h-72" />
       </div>
     </section>
+    </Layout>
   );
 };
 

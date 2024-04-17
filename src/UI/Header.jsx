@@ -29,7 +29,7 @@ const Header = () => {
     {
       id: 2,
       title: "درباره رستوران",
-      link: "/AboutUS",
+      link: "/AboutUs",
     },
     {
       id: 3,
