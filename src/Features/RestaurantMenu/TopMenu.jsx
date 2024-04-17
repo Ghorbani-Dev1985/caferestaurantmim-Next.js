@@ -1,9 +1,10 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Title from "@/UI/Title";
+import { SwiperSlide } from "swiper/react";
+import TopMenuSlider from "@/UI/TopMenuSlider";
 
-const MainMenuItems = [
+const topMenuItems = [
   {
     id: 1,
     src: "/RestaurantMenu/RestaurantMenu-01.webp",
@@ -36,56 +37,41 @@ const MainMenuItems = [
   },
   {
     id: 7,
-    src: "/RestaurantMenu/RestaurantMenu-10.webp",
-    link: "appetizer",
+    src: "/RestaurantMenu/RestaurantMenu-07.webp",
+    link: "#",
   },
   {
     id: 8,
-    src: "/RestaurantMenu/RestaurantMenu-07.webp",
-    link: "appetizer",
+    src: "/RestaurantMenu/RestaurantMenu-08.webp",
+    link: "#",
   },
   {
     id: 9,
-    src: "/RestaurantMenu/RestaurantMenu-08.webp",
-    link: "appetizer",
-  },
-  {
-    id: 10,
     src: "/RestaurantMenu/RestaurantMenu-09.webp",
-    link: "appetizer",
-  },
-  {
-    id: 11,
-    src: "/RestaurantMenu/RestaurantMenu-11.webp",
-    link: "drinks",
-  },
-  {
-    id: 12,
-    src: "/RestaurantMenu/RestaurantMenu-12.webp",
-    link: "/cafeMenu#hot",
+    link: "#",
   },
 ];
-function QuickAccess() {
+const TopMenu = () => {
+
   return (
-    <section className="flex flex-col">
-      <Title text="دسترسی سریع" />
-      <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5">
-        {MainMenuItems.map(({ id, src, link }) => (
-          <React.Fragment key={id}>
-            <Link href={`/RestaurantMenu#${link}`}>
+    <>
+      <TopMenuSlider>
+        {topMenuItems.map(({ id, src, link }) => (
+          <SwiperSlide key={id} className="rounded-full">
+            <Link href={`#${link}`}>
               <Image
                 width={512}
                 height={512}
                 alt="ghorbani-dev.ir"
                 src={src}
-                className="object-fill hover:scale-90 hover:opacity-80 transition-all ease-linear duration-250"
+                className="object-fill rounded-lg"
               />
             </Link>
-          </React.Fragment>
+          </SwiperSlide>
         ))}
-      </div>
-    </section>
+      </TopMenuSlider>
+    </>
   );
-}
+};
 
-export default QuickAccess;
+export default TopMenu;

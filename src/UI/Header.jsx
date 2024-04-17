@@ -6,13 +6,12 @@ import {
   NavbarItem,
   NavbarMenuToggle,
   NavbarMenu,
-  Button,
   Divider,
 } from "@nextui-org/react";
 import Logo from "@/Images/Logo/logo2.webp";
 import { HiPhone } from "react-icons/hi";
 import { HiDeviceMobile } from "react-icons/hi";
-import { BiLogoInstagram } from "react-icons/bi";
+import { BiLogoInstagram, BiMenuAltRight } from "react-icons/bi";
 import Link from "next/link";
 import Image from "next/image";
 import { BiCircle } from "react-icons/bi";
@@ -20,6 +19,7 @@ import { useRouter } from "next/router";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { pathname } = useRouter();
+  
   const menuItems = [
     {
       id: 1,
@@ -34,7 +34,7 @@ const Header = () => {
     {
       id: 3,
       title: "رستوران میم",
-      link: "/restaurantMenu",
+      link: "/RestaurantMenu",
     },
     {
       id: 4,
@@ -62,7 +62,7 @@ const Header = () => {
               href="tel:01332265593"
               className="flex-center gap-1 text-white"
             >
-              {" "}
+
               <HiPhone className="size-5 text-primary-500 rotate-[265deg]" />{" "}
               32265593
             </Link>
@@ -70,7 +70,7 @@ const Header = () => {
               href="tel:01332231879"
               className="flex-center gap-1 text-white"
             >
-              {" "}
+
               <HiPhone className="size-5 text-primary-500 rotate-[265deg]" />{" "}
               32231879
             </Link>
@@ -78,29 +78,29 @@ const Header = () => {
               href="tel:09124366107"
               className="flex-center gap-1 text-white"
             >
-              {" "}
+
               <HiDeviceMobile className="size-5 text-primary-500" /> 0912436610
             </Link>
           </div>
           <Link href="https://www.instagram.com/cafe_rest" isExternal>
-            {" "}
             <BiLogoInstagram className="size-7 text-primary-500" />
           </Link>
         </div>
       </section>
 
       <Navbar
-        onMenuOpenChange={setIsMenuOpen}
+        isBordered
+        isMenuOpen={isMenuOpen}
+        onMenuOpenChange={setIsMenuOpen}  
         classNames={{
-          base: "container rounded-lg top-5",
+          base: "container rounded-lg top-5 p-4 z-50 bg-white/10 backdrop-blur-xl",
           wrapper: " lg:max-w-[1280px] px-0",
         }}
       >
-        <NavbarContent>
-          <NavbarMenuToggle
-            aria-label={isMenuOpen ? "Open menu" : "Close menu"}
-            className="sm:hidden"
-          />
+        <NavbarContent justify="start">
+          <button onClick={() => setIsMenuOpen((prev) => !prev)} className="sm:hidden">
+          <BiMenuAltRight className="size-8 text-primary"/>
+          </button>
           <NavbarBrand>
             <Image
               width={116}
@@ -142,9 +142,10 @@ const Header = () => {
           </NavbarItem>
         </NavbarContent>
 
-        {isMenuOpen && (
+         {
+          isMenuOpen &&
           <NavbarMenu
-            onClick={() => setIsMenuOpen((prev) => !prev)}
+            
             className="px-0 gap-0 pt-16"
           >
             {menuItems.map(({ id, title, link }) => (
@@ -165,9 +166,10 @@ const Header = () => {
               </React.Fragment>
             ))}
           </NavbarMenu>
-        )}
+         }
+        
       </Navbar>
-      <Divider className="mt-4 bg-primary/50" />
+      <Divider className="bg-primary/50" />
     </>
   );
 };

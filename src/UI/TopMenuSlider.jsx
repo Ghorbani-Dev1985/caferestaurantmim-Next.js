@@ -6,7 +6,7 @@ import { Pagination, Autoplay, A11y } from "swiper/modules";
 const TopMenuSlider = ({ children }) => {
   return (
     <>
-      <div className="w-full flex h-auto sticky top-20 inset-x-0 z-30 my-8">
+      <div className="w-full flex h-auto sticky top-28 inset-x-0 z-30 my-8">
         <Swiper
           loop={true}
           spaceBetween={7}

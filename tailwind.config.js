@@ -55,7 +55,6 @@ module.exports = {
 },
   plugins: [
     nextui({
-     prefix: "crmim", 
      addCommonColors: true,
      themes: {
       light: {
