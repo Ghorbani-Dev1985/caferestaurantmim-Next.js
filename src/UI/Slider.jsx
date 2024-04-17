@@ -9,31 +9,31 @@ import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 const SlideImageItems = [
   {
     id: 1,
-    href: "src/Assets/Images/Sliders/slide-1.webp",
+    href: "/Sliders/slide-1.webp",
   },
   {
     id: 2,
-    href: "src/Assets/Images/Sliders/slide-2.webp",
+    href: "/Sliders/slide-2.webp",
   },
   {
     id: 3,
-    href: "src/Assets/Images/Sliders/slide-3.webp",
+    href: "/Sliders/slide-3.webp",
   },
   {
     id: 4,
-    href: "src/Assets/Images/Sliders/slide-4.webp",
+    href: "/Sliders/slide-4.webp",
   },
   {
     id: 5,
-    href: "src/Assets/Images/Sliders/slide-5.webp",
+    href: "/Sliders/slide-5.webp",
   },
   {
     id: 6,
-    href: "src/Assets/Images/Sliders/slide-6.webp",
+    href: "/Sliders/slide-6.webp",
   },
   {
     id: 7,
-    href: "src/Assets/Images/Sliders/slide-7.webp",
+    href: "/Sliders/slide-7.webp",
   },
 ];
 
@@ -66,6 +66,8 @@ const Slider = () => {
         {SlideImageItems.map(({ id, href }) => (
           <SwiperSlide key={id}>
             <Image
+              width="1920"
+              height="700"
               alt="ghorbani-dev.ir"
               src={href}
               className="object-fill rounded-none"

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link, Button, Image, Divider} from "@nextui-org/react";
-import Logo from '@/Images/Assets/Images/Logo/logo2.webp';
+import Logo from '/Logo/logo2.webp';
 import { HiPhone } from "react-icons/hi";
 import { HiDeviceMobile } from "react-icons/hi";
 import { BiLogoInstagram } from "react-icons/bi";

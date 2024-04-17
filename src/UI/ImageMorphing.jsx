@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Image from "next/link";
 const MorphingValues = [
     {
         id: 1,
@@ -187,7 +187,6 @@ const MorphingValues = [
     }
 ]
 const ImageMorphing = ({href}) => {
-   
   return (
     <>
       <svg  xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" className='w-full h-full max-h-full max-w-full overflow-visible' viewBox="0 0 200 200">
@@ -383,7 +382,7 @@ const ImageMorphing = ({href}) => {
 	</path>
 </clipPath>
 	<g clipPath="url(#fh)">
-		<image className='w-full h-auto' href={href} preserveAspectRatio="none" />
+		<image className='w-full h-auto' href={href.src} preserveAspectRatio="none" />
 	</g>
 
 </svg> 

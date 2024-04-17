@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import DividerImg from "./../Assets/Images/Main/title.webp";
+import DividerImg from "@/Images/Main/title.webp";
 const Title = ({ text }) => {
   return (
     <section className="container flex flex-col items-center my-8">

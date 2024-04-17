@@ -2,6 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@/Data/*" : ["Data/*"],
       "@/Components/*" : ["src/Components/*"],
       "@/Containers/*" : ["src/Containers/*"],
       "@/Features/*" : ["src/Features/*"],
@@ -9,7 +10,7 @@
       "@/server/*" : ["src/Server/*"],
       "@/Api/*" : ["src/Api/*"],
       "@/Styles/*" : ["src/Styles/*"],
-      "@/Images/*" : ["src/Assets/Images/*"],
+      "@/Images/*" : ["public/*"],
       "@/Fonts/*" : ["src/Assets/Fonts/*"],
     },
   },
