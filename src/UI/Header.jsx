@@ -133,7 +133,7 @@ const Header = () => {
         <NavbarContent justify="end">
           <NavbarItem>
             <Link
-              href="/menus"
+              href="/Menus"
               className="flex justify-normal items-center gap-1 bg-primary hover:bg-primary-300 text-white cursor-pointer px-9 py-1.5 rounded-full transition-colors"
             >
               <BiCircle /> منوها

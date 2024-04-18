@@ -2,7 +2,6 @@ import Image from "next/image";
 import React from "react";
 import { BiAlarmExclamation, BiFoodMenu } from "react-icons/bi";
 import TopPreFooter from "@/Images/Footer/topPreFooter.webp";
-import { useRouter } from "next/router";
 import Link from "next/link";
 const PreFooter = () => {
   return (
@@ -24,7 +23,7 @@ const PreFooter = () => {
             <span> نهار و شام ساعت 12:00 الی 24:00</span>
           </p>
           <Link
-              href="/menus"
+              href="/Menus"
               className="flex justify-normal items-center gap-1 bg-transparent hover:bg-secondary/10 border border-secondary rounded-lg cursor-pointer px-9 py-1.5 transition-colors"
             >
               <BiFoodMenu /> منو کافه رستوران میم

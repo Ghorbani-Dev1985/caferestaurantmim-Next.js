@@ -4,7 +4,7 @@ import Title from "@/UI/Title";
 
 const Menus = () => {
   return (
-    <Link href="/menus">
+    <Link href="/Menus">
       <Title text=" منو کافه و رستوران" />
     </Link>
   );
