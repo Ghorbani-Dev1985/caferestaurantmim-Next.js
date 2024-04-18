@@ -3,7 +3,22 @@ import DividerImg from '@/Images/Main/title.webp'
 import { AddressItems } from "@/UI/Footer";
 import { Button, Input, Textarea } from "@nextui-org/react";
 import AddressMap from "@/UI/AddressMap";
+import { useForm } from "react-hook-form";
+import TextField from "@/UI/TextField";
+import TextAreaField from "@/UI/TextAreaField";
+import Http from "@/Services/HttpService";
+import toast from "react-hot-toast";
 const ContactUs = () => {
+  const {register , formState: {errors , isValid} , handleSubmit , reset} = useForm()
+  const NewContactUsMsgHandler = (data) => {
+    console.log(data)
+    Http.post("ContactUs/" , data)
+    .then(({data}) => {
+      toast.success(`${data.message}`)
+      reset()
+    })
+    .catch(err => console.log(err))
+  }
     return ( 
         <section className='container flex flex-col md:flex-row justify-between gap-12 mt-8'>
         <div className='flex flex-1 flex-col items-center justify-center gap-y-12 border-1 border-gray-200 rounded-lg p-5'>
@@ -16,16 +31,47 @@ const ContactUs = () => {
         className='object-fill'
         />
         <div className='space-y-10'><AddressItems /></div>
-        <form className='w-full space-y-8'>
-        <Input size="sm" type="text" label="نام و نام خانوادگی*" />
-        <Input size="sm" type="tel" label="شماره موبایل*" />
-        <Textarea
-            variant="flat"
-            placeholder="پیام خود را وارد نمایید*"
-            minRows="10"
-            maxRows="20"
-          />
-          <Button size="md" color='primary' className='w-full font-extrabold'>
+        <form onSubmit={handleSubmit(NewContactUsMsgHandler)} className='w-full space-y-8'>
+        <TextField name="FullName" placeholder="لطفا نام و نام خانوادگی را وارد نمایید" label="نام و نام خانوادگی" required register={register} validationSchema={
+            {
+                required: "لطفا نام و نام خانوادگی را وارد نمایید",
+                minLength:{
+                    value: 3,
+                    message: "حداقل ۳ کاراکتر وارد نمایید  "
+                },
+                maxLength: {
+                    value: 30,
+                    message: "حداکثر ۳۰ کاراکتر وارد نمایید"
+                }
+            }
+        } errors={errors}/>
+        <TextField name="PhoneNumber" placeholder="لطفا شماره موبایل خود را وارد نمایید" label="شماره موبایل" required register={register} validationSchema={
+            {
+                required: "لطفا شماره موبایل را وارد نمایید",
+                minLength:{
+                    value: 10,
+                    message: "حداقل ۱۰ کاراکتر وارد نمایید  "
+                },
+                maxLength: {
+                    value: 11,
+                    message: "حداکثر ۱۱ کاراکتر وارد نمایید"
+                }
+            }
+        } errors={errors}/>
+        <TextAreaField name="Message" placeholder="پیام خود را وارد نمایید" label="پیام شما" required register={register} validationSchema={
+            {
+                required: "لطفا پیام خود را وارد نمایید",
+                minLength:{
+                    value: 25,
+                    message: "حداقل ۲۵ کاراکتر وارد نمایید  "
+                },
+                maxLength: {
+                    value: 350,
+                    message: "حداکثر ۳۵۰ کاراکتر وارد نمایید"
+                }
+            }
+        } errors={errors}/>
+          <Button isDisabled={!isValid} type="submit" size="md" color='primary' className='w-full font-extrabold disabled:bg-slate-400 disabled:cursor-not-allowed'>
           ارسال پیام
         </Button> 
         </form>

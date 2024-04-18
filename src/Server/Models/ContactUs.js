@@ -1,16 +1,19 @@
 import mongoose from "mongoose"
 
 const ContactUsSchema = new mongoose.Schema({
-    title: {
+    fullName: {
         type: String,
-        unique: true,
         required: true,
     },
-    description: {
+    phoneNumber: {
         type: String,
         required: true,  
     },
-    isCompleted: {
+    message: {
+        type: String,
+        required: true,  
+    },
+    isAnswer: {
         type: Boolean,
         default: false,
     }

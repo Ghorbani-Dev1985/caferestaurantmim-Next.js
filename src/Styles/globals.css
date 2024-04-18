@@ -19,6 +19,12 @@
       }
 }
 
+@layer components {
+  .textField-input {
+    @apply w-full px-4 py-3 rounded-lg text-secondary-900 outline-none border border-gray-100 bg-gray-100 dark:bg-transparent hover:border-primary-500 focus:border-primary-500 transition-all duration-300 ease-in-out focus:shadow-lg focus:shadow-primary-200 dark:focus:shadow-secondary-200
+  }
+}
+
 @layer utilities {
     .flex-center{
       @apply flex justify-center items-center
