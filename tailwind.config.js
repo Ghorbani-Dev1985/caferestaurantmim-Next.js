@@ -7,6 +7,7 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/Features/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/UI/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend:{
@@ -52,6 +53,9 @@ module.exports = {
       'lg': '1024px',
       'xl': '1280px',
     },
+    variants: {
+      scrollbar: ["light"],
+    },
 },
   plugins: [
     nextui({
@@ -68,10 +72,13 @@ module.exports = {
       }
      } 
   }),
+],
+plugins: [
+  nextui(),
   require("tailwind-scrollbar"),
   function ({ addVariant }) {
     addVariant("child", "& > *");
     addVariant("child-hover", "& > *:hover");
   },
-]
+],
 };

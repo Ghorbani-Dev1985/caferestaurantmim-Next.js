@@ -53,7 +53,6 @@ const LightBoxModal = ({
                   alt="ghorbani-dev.ir"
                   src={clickedImg}
                   className="object-fill"
-                  isZoomed
                 />
                 <Button
                   color="white"

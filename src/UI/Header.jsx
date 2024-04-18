@@ -39,7 +39,7 @@ const Header = () => {
     {
       id: 4,
       title: "کافه میم",
-      link: "/cafeMenu",
+      link: "/CafeMenu",
     },
     {
       id: 5,
@@ -52,7 +52,6 @@ const Header = () => {
       link: "/contactUs",
     },
   ];
-  console.log(isMenuOpen);
   return (
     <>
       <section className="bg-secondary p-5">
@@ -82,7 +81,7 @@ const Header = () => {
               <HiDeviceMobile className="size-5 text-primary-500" /> 0912436610
             </Link>
           </div>
-          <Link href="https://www.instagram.com/cafe_rest" isExternal>
+          <Link href="https://www.instagram.com/cafe_rest">
             <BiLogoInstagram className="size-7 text-primary-500" />
           </Link>
         </div>
@@ -93,7 +92,7 @@ const Header = () => {
         isMenuOpen={isMenuOpen}
         onMenuOpenChange={setIsMenuOpen}  
         classNames={{
-          base: "container rounded-lg top-5 p-4 z-50 bg-white/10 backdrop-blur-xl",
+          base: "container rounded-lg top-5 p-4 border-none",
           wrapper: " lg:max-w-[1280px] px-0",
         }}
       >

@@ -30,8 +30,7 @@ const BlogsCard = ({id , title , src}) => {
           width={279}
           height={279}
           alt="ghorbani-dev.ir"
-          src={src}
-          isZoomed
+          src={src}     
           className="object-fill rounded-xl"
         />
         </div>
