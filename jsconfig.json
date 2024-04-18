@@ -7,7 +7,7 @@
       "@/Containers/*" : ["src/Containers/*"],
       "@/Features/*" : ["src/Features/*"],
       "@/UI/*" : ["src/UI/*"],
-      "@/server/*" : ["src/Server/*"],
+      "@/Server/*" : ["src/Server/*"],
       "@/Api/*" : ["src/Api/*"],
       "@/Styles/*" : ["src/Styles/*"],
       "@/Images/*" : ["public/*"],
