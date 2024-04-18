@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ImageGalleryUi from "@UI/UI/ImageGallery";
+import ImageGalleryUi from "@/UI/ImageGallery";
 import data from "@/Data/data.json";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,7 +13,7 @@ const ImageGallery = () => {
     setClickedImg(href);
   };
   return (
-    <section className="container my-7">
+    <section className="my-7">
       <ImageGalleryUi
         clickedImg={clickedImg}
         setClickedImg={setClickedImg}
@@ -24,6 +24,8 @@ const ImageGallery = () => {
           <React.Fragment key={id}>
             <div className="relative overflow-hidden bg-cover bg-no-repeat cursor-pointer">
               <Image
+                width="220"
+                height="220"
                 alt="ghorbani-dev.ir"
                 src={href}
                 className="object-fill size-[220px] rounded-lg"
@@ -37,7 +39,7 @@ const ImageGallery = () => {
         ))}
       </ImageGalleryUi>
       <div className="flex-center">
-        <Link href="/imageGallery">
+        <Link href="/ImageGallery">
           <Title text="مشاهده همه تصاویر" />
         </Link>
       </div>

@@ -44,7 +44,7 @@ const Header = () => {
     {
       id: 5,
       title: "گالری",
-      link: "/imageGallery",
+      link: "/ImageGallery",
     },
     {
       id: 6,
