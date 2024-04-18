@@ -16,7 +16,7 @@ const BlogsList = () => {
           );
         })}
       </div>
-      <Link href="/blogs">
+      <Link href="/Blogs">
         <Title text="نمایش بیشتر..." />
       </Link>
     </>
