@@ -49,7 +49,7 @@ const Header = () => {
     {
       id: 6,
       title: "ارتباط با ما",
-      link: "/contactUs",
+      link: "/ContactUs",
     },
   ];
   return (
