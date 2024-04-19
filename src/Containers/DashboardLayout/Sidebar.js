@@ -18,7 +18,7 @@ const NavlinkItems = [
     id: 2,
     title: " افزودن مقاله",
     icon: <BiListPlus />,
-    link: "/",
+    link: "/dashboard/NewBlog",
   },
   {
     id: 3,

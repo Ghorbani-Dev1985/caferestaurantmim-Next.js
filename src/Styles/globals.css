@@ -33,3 +33,7 @@
       @apply flex justify-between items-center
     }   
   }
+  .ql-editor {
+    direction: rtl;
+    text-align: right !important;
+  }

@@ -9,7 +9,7 @@ import TextAreaField from "@/UI/TextAreaField";
 import Http from "@/Services/HttpService";
 import toast from "react-hot-toast";
 const ContactUs = () => {
-  const {register , formState: {errors , isValid} , handleSubmit , reset} = useForm()
+  const {register , formState: {errors} , handleSubmit , reset} = useForm()
   const NewContactUsMsgHandler = (data) => {
     console.log(data)
     Http.post("ContactUs/" , data)
@@ -71,7 +71,7 @@ const ContactUs = () => {
                 }
             }
         } errors={errors}/>
-          <Button isDisabled={!isValid} type="submit" size="md" color='primary' className='w-full font-extrabold disabled:bg-slate-400 disabled:cursor-not-allowed'>
+          <Button type="submit" size="md" color='primary' className='w-full font-extrabold'>
           ارسال پیام
         </Button> 
         </form>
