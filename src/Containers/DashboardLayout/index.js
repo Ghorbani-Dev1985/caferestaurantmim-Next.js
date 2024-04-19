@@ -1,3 +1,4 @@
+import Header from "./Header";
 import Sidebar from "./Sidebar";
 
 const DashboardLayout = ({children}) => {
@@ -6,7 +7,7 @@ const DashboardLayout = ({children}) => {
             <Sidebar />
       <div className='col-span-full md:col-auto p-5 overflow-y-auto'>
           <div className='w-full mx-auto min-h-screen bg-primary-50 rounded-[2.5rem] px-8 py-4'>
-         
+         <Header />
           <div className='flex flex-col gap-y-12'>
         {children}
           </div>
