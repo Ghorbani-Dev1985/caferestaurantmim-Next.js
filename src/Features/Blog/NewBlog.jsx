@@ -11,7 +11,7 @@ const modules = {
     toolbar: [
       [{ header: []} ],
       [{ size: [] }],
-      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+      ['bold', 'italic', 'underline', 'strike', 'blockquote' ],
       [
         { list: 'ordered' },
         { list: 'bullet' },
@@ -84,7 +84,7 @@ const NewBlog = () => {
               <div className="flex-center w-full relative">
                 <label
                   htmlFor="CoverUpload"
-                  className="flex-center flex-col w-full h-36 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                  className="flex-center flex-col w-full md:h-36 p-2 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
                 >
                   <div className="flex-center flex-col pt-5 pb-6">
                     <BiCloudUpload className="size-10 text-gray-500 mb-2" />
