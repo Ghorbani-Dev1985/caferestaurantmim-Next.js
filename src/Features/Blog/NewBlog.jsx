@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { BiCloudUpload } from "react-icons/bi";
 import dynamic from 'next/dynamic';
 import 'react-quill/dist/quill.snow.css';
+import Http from "@/Services/HttpService";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 const modules = {
     toolbar: [
@@ -52,16 +53,26 @@ const NewBlog = () => {
   } = useForm();
   const [blogImage, setBlogImage] = useState("");
   const [content , setContent] = useState("")
-  const NewBlogHandler = (data) => {
-    console.log(data , content);
-    console.log(data.Image[0].name)
+  const [selectedImage , setSelectedImage] = useState("")
+  const [selectedFile , setSelectedFile] = useState("")
+  const NewBlogHandler = async (data) => {
+    let formData = new FormData();
+    formData.append("title", data.title);
+    formData.append("image", data.image[0].name);
+    formData.append("content", content);
+    formData.append("imageFile" , selectedFile)
+    await Http.post('/blog' , formData)
+    .then(({data}) => {
+      console.log(data.message)
+    })
+    .catch((err) => console.log(err))
   };
   return (
     <Fieldset title="افزودن مقاله جدید">
       <form onSubmit={handleSubmit(NewBlogHandler)}>
         <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6">
           <TextField
-            name="FullName"
+            name="title"
             placeholder="لطفا عنوان مقاله را وارد نمایید"
             label=" عنوان مقاله"
             required
@@ -84,7 +95,7 @@ const NewBlog = () => {
               <div className="flex-center w-full relative">
                 <label
                   htmlFor="CoverUpload"
-                  className="flex-center flex-col w-full md:h-36 p-2 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                  className="flex-center flex-col w-full md:h- p-2 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
                 >
                   <div className="flex-center flex-col pt-5 pb-6">
                     <BiCloudUpload className="size-10 text-gray-500 mb-2" />
@@ -101,10 +112,9 @@ const NewBlog = () => {
                     }
                   </div>
                   <input
-                    id="Image"
+                    id="image"
                     type="file"
-                    required
-                    {...register("Image", {
+                    {...register("image", {
                       required: "لطفا تصویر مقاله را انتخاب نمایید",
                       validate: {
                         fileSize: (file) =>
@@ -112,16 +122,22 @@ const NewBlog = () => {
                           "حداکثر حجم فایل باید کمتر از یک مگابایت باشد",
                       },
                     })}
-                    onChange={(event) =>
-                      setBlogImage(event.target.files[0].name)
-                    }
+                    onChange={({target}) => {
+                     if(target.files) {
+                      const file = target.files[0];
+                      setSelectedImage(URL.createObjectURL(file));
+                      setSelectedFile(file)
+                      setBlogImage(target.files[0].name);
+                     }
+                    }}
+                      
                     accept=".webp , .jpg , .png, .jpeg"
                     className="h-full absolute z-50 opacity-0"
                   />
                 </label>
               </div>
               <span className="block text-rose-500 text-sm my-2">
-                {errors.Image?.message}
+                {errors.image?.message}
               </span>
             </div>
         </div>
@@ -130,10 +146,9 @@ const NewBlog = () => {
       modules={modules}
       formats={formats}
       theme="snow"
-      name="Content"
+      name="content"
        value={content}
       onChange={setContent}
-      className=""
     />
 
         <div className="flex-center my-4">
