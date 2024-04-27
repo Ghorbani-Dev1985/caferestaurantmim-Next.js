@@ -8,8 +8,17 @@ const Api = axios.create({
 })
 
 Api.interceptors.request.use(
-    res => res,
-    err => Promise.reject(err)
+    (config) => {
+        const getToken = JSON.parse(typeof window !== "undefined" ? window.localStorage.getItem("user") : false);
+        if (getToken !== null) {
+          config.headers.Authorization = `Bearer ${getToken.accessToken}`;
+          config.headers["Content-Type"] = "application/json";
+        }
+        return config;
+      },
+      (error) => {
+        return Promise.reject(error);
+      }
 )
 
 Api.interceptors.response.use(

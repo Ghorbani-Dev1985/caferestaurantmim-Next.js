@@ -85,32 +85,8 @@ exports.login = async (req, res, next) => {
 
 exports.getMe = async (req, res, next) => {
   try {
-    const userCourses = await courseUserModel
-      .find({ user: req.user._id })
-      .populate("course");
 
-    const courses = [];
-
-    for (const userCourse of userCourses) {
-      courses.push(userCourse.course);
-    }
-
-    const adminNotifications = await notificationsModel.find({
-      admin: req.user._id,
-    });
-
-    const notifications = [];
-
-    for (const adminNotification of adminNotifications) {
-      if (adminNotification.see === 0) {
-        notifications.push({
-          msg: adminNotification.msg,
-          _id: adminNotification._id,
-        });
-      }
-    }
-
-    return res.json({ ...req.user, courses, notifications });
+    return res.json({ ...req.user});
   } catch (error) {
     next(error);
   }

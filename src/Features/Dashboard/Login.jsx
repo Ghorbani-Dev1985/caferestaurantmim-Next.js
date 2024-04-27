@@ -1,5 +1,4 @@
 import useTitle from "@/Hooks/useTitle";
-import Http from "@/Services/HttpService";
 import Loading from "@/UI/Loading";
 import TextField from "@/UI/TextField";
 import { Button } from "@nextui-org/react";
@@ -7,35 +6,27 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
 import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
+import { useAuth, useAuthActions } from "src/Context/AuthContext";
 
 const LoginPage = () => {
   const title = useTitle(" ورود به حساب کاربری | کافه رستوران میم");
-  const router = useRouter();
+  const router = useRouter()
+  const dispatch = useAuthActions();
+  const { loading , user} = useAuth();
   const [isShowPassword, setIsShowPassword] = useState(false);
-  const [loading , setLoading] = useState(false);
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
   const LoginHandler = async (data) => {
-    setLoading(true)
-    await Http.post("/auth/login" , data)
-    .then(({data}) => {
-        setLoading(false)
-        console.log(data)
-        router.replace("dashboard/blogs")
-    })
-    .catch((err) =>{
-        setLoading(false)
-        toast.error(err.message)
-    })
+    dispatch({ type: "LOGIN", payload: data });
   };
-  //   useEffect(() => {
-  //     if(user) router.push("/")
-  //  },[])
+  console.log(user)
+    useEffect(() => {
+      if(user) router.push("/")
+   },[user])
   return (
     <main className="w-full h-screen bg-gradient-to-t from-primary-500 to-primary-50">
       <section className="container h-screen flex-center">

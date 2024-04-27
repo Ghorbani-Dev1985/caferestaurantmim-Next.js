@@ -12,7 +12,7 @@ const NavlinkItems = [
     id: 1,
     title: "مقاله ها",
     icon: <HiOutlineNewspaper />,
-    link: "/dashboard",
+    link: "/dashboard/blogs",
   },
   {
     id: 2,
