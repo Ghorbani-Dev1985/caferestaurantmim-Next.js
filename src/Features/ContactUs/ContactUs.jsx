@@ -12,8 +12,9 @@ const ContactUs = () => {
   const {register , formState: {errors} , handleSubmit , reset} = useForm()
   const NewContactUsMsgHandler = (data) => {
     console.log(data)
-    Http.post("ContactUs/" , data)
+    Http.post("/contact" , data)
     .then(({data}) => {
+        console.log(data)
       toast.success(`${data.message}`)
       reset()
     })
@@ -32,7 +33,7 @@ const ContactUs = () => {
         />
         <div className='space-y-10'><AddressItems /></div>
         <form onSubmit={handleSubmit(NewContactUsMsgHandler)} className='w-full space-y-8'>
-        <TextField name="FullName" placeholder="لطفا نام و نام خانوادگی را وارد نمایید" label="نام و نام خانوادگی" required register={register} validationSchema={
+        <TextField name="name" placeholder="لطفا نام و نام خانوادگی را وارد نمایید" label="نام و نام خانوادگی" required register={register} validationSchema={
             {
                 required: "لطفا نام و نام خانوادگی را وارد نمایید",
                 minLength:{
@@ -45,7 +46,7 @@ const ContactUs = () => {
                 }
             }
         } errors={errors}/>
-        <TextField name="PhoneNumber" placeholder="لطفا شماره موبایل خود را وارد نمایید" label="شماره موبایل" required register={register} validationSchema={
+        <TextField name="phone" type="tel" placeholder="لطفا شماره موبایل خود را وارد نمایید" label="شماره موبایل" required register={register} validationSchema={
             {
                 required: "لطفا شماره موبایل را وارد نمایید",
                 minLength:{
@@ -58,7 +59,7 @@ const ContactUs = () => {
                 }
             }
         } errors={errors}/>
-        <TextAreaField name="Message" placeholder="پیام خود را وارد نمایید" label="پیام شما" required register={register} validationSchema={
+        <TextAreaField name="body" placeholder="پیام خود را وارد نمایید" label="پیام شما" required register={register} validationSchema={
             {
                 required: "لطفا پیام خود را وارد نمایید",
                 minLength:{

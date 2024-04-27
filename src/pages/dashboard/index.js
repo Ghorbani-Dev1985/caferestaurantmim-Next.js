@@ -1,18 +1,9 @@
-import DashboardFeature from '@/Features/Dashboard/Dashboard' 
-import Http from '@/Services/HttpService';
-const Dashboard = () => {
-    return ( 
-       <DashboardFeature />
-     );
+import LoginPage from "@/Features/Dashboard/Login";
+
+const Login = () => {
+  return ( 
+      <LoginPage />
+   );
 }
  
-export default Dashboard;
-
-// export async function getStaticProps({req , query}) {
-//   const { data } = await Http.get('/Blog');
-//   return {
-//     props: {
-//       blogsList: data,
-//     },
-//   };
-// }
+export default Login;

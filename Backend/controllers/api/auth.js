@@ -23,12 +23,6 @@ exports.register = async (req, res, next) => {
     }
     const countOfRegisteredUser = await userModel.count();
 
-    const isUserBan = await banUserModel.find({ phone });
-    if (isUserBan.length) {
-      return res.status(403).json({
-        message: "this phone number banned!",
-      });
-    }
 
     const hashedPassword = await bcrypt.hash(password, 12);
 
@@ -70,13 +64,13 @@ exports.login = async (req, res, next) => {
     if (!user) {
       return res
         .status(401)
-        .json("there is no user with this email or username");
+        .json({ message: "کاربری با جنین مشخصات یافت نگردید" });
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
     if (!isPasswordValid) {
-      return res.status(401).json({ message: "password is not correct" });
+      return res.status(401).json({ message: "ایمیل یا رمز عبور اشتباه است" });
     }
 
     const accessToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {

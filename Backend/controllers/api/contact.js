@@ -2,22 +2,21 @@ const contactModel = require("../../models/contact");
 var nodemailer = require("nodemailer");
 
 exports.create = async (req, res, next) => {
+  console.log(req.body)
   try {
     await contactModel.createValidation(req.body).catch((err) => {
       err.statusCode = 400;
       throw err;
     });
-    const { name, email, phone, body } = req.body;
-
+    const { name, phone, body } = req.body;
+    
     const newcontact = await contactModel.create({
       name,
-      email,
       phone,
       body,
-      answer: 0,
     });
 
-    return res.status(201).json(newcontact);
+    return res.status(201).json({message : "پیام شما با موفقیت ثبت گردید و با شما تماس خواهیم گرفت" , newcontact})
   } catch (error) {
     next(error);
   }
@@ -52,7 +51,7 @@ exports.asnwer = async (req, res, next) => {
     var mailOptions = {
       from: "sabzlearnir@gmail.com",
       to: email,
-      subject: "پاسخ پیغام شما از سمت آکادمی سبزلرن",
+      subject: "پاسخ پیغام شما از سمت  کافه رستوران میم",
       text: answer,
     };
 

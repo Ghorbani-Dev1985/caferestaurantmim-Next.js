@@ -2,7 +2,6 @@ const yup = require("yup");
 
 const createContactValidator = yup.object().shape({
   name: yup.string().required("نام الزامی است"),
-  email: yup.string().email().required("ایمیل الزامی است"),
   phone: yup
     .string()
     .matches(/^[+]*[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/, "شماره تلفن معتبر نیست")
