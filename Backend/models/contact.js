@@ -16,8 +16,8 @@ const contactSchema = new mongoose.Schema(
       required: true,
     },
     answer: {
-      type: Number,
-      default : 0,
+      type: Boolean,
+      default : false,
       required: true,
     },
     body: {

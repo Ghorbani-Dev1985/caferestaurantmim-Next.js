@@ -1,6 +1,6 @@
 import React from "react";
 import Table from "@/UI/Table";
-import { Button, Chip } from "@nextui-org/react";
+import { Button, Chip, checkboxGroup } from "@nextui-org/react";
 import Image from "next/image";
 import { IoCheckmarkCircleSharp } from "react-icons/io5";
 import { RiDraftFill } from "react-icons/ri";
@@ -8,9 +8,23 @@ import ModalPlacement from "@/UI/ModalPlacement";
 import { BiShow } from "react-icons/bi";
 import { HiOutlineTrash } from "react-icons/hi";
 import ToLocalDateStringShort from "@/Server/Utils/ToLocalDateStringShort";
+import Http from "@/Services/HttpService";
+import toast from "react-hot-toast";
+import { useRouter } from "next/router";
+import RouterPush from "@/Hooks/RouterPush";
 const ContactUSRow = ({ contact, index }) => {
-  console.log(contact);
-  const { answer, body, createdAt, name, phone } = contact;
+  const router = useRouter()
+  const {_id, answer, body, createdAt, name, phone } = contact;
+  const AnsweredHandler = async (id) => {
+     await Http.put('/contact/answered' , {id})
+     .then(({data})=> {
+      toast.success(data.message)
+      RouterPush(router)
+     })
+     .catch((err) => {
+      toast.error(err.message)
+     })
+  }
   return (
     <>
       <Table.Row>
@@ -42,7 +56,8 @@ const ContactUSRow = ({ contact, index }) => {
                 startContent={<RiDraftFill size={18} />}
                 variant="faded"
                 color="warning"
-                className="border border-amber-500"
+                className="border border-amber-500 cursor-pointer"
+                onClick={() => AnsweredHandler(_id)}
               >
                 بی پاسخ
               </Chip>

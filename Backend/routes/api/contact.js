@@ -15,4 +15,8 @@ router
   .route("/answer")
   .post(authenticatedMiddleware, isAdminMiddleware, controller.asnwer);
 
+  router
+  .route("/answered")
+  .put(authenticatedMiddleware, isAdminMiddleware, controller.asnwered);
+
 module.exports = router;

@@ -73,6 +73,27 @@ exports.asnwer = async (req, res, next) => {
   }
 };
 
+
+exports.asnwered = async (req, res, next) => {
+  try {
+    console.log(req.body.id)
+
+    const answeredContact = await contactModel.findOneAndUpdate(
+      { _id: req.body.id },
+      {
+        answer: true,
+      },
+      { new: true }
+    );
+    if(!answeredContact){
+      return res.status(404).json({message : "چنین پیامی یافت نگردید"})
+    }
+    res.json({ message: "تغییر وضعیت به درستی انجام گردید" , answeredContact});
+  } catch (error) {
+    next(error);
+  }
+};
+
 exports.remove = async (req, res, next) => {
   try {
     await contactModel.removeValidation(req.params).catch((err) => {
@@ -83,7 +104,7 @@ exports.remove = async (req, res, next) => {
       _id: req.params.id,
     });
     if (!deletedContact) {
-      return res.status(404).json({ message: "Contact Not Found!" });
+      return res.status(404).json({ message: "پیام مورد نظر یافت نگردید" });
     }
     return res.json(deletedContact);
   } catch (error) {
