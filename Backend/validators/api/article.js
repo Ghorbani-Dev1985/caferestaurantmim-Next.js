@@ -25,8 +25,4 @@ exports.articleValidator = yup.object().shape({
       .required("تصویر الزامی می باشد"),
   }),
 
-  categoryID: yup
-    .string()
-    .required("شناسه دسته بندی مقاله الزامی است")
-    .matches(/^[0-9a-fA-F]{24}$/, "شناسه دسته بندی نامعتبر است"),
 });

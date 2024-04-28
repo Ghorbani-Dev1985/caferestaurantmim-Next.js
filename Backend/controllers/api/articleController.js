@@ -24,7 +24,6 @@ exports.create = async (req, res, next) => {
       shortName,
       body,
       creator: req.user._id,
-      categoryID,
       cover: req.file.filename,
       publish: 1,
     });
@@ -58,7 +57,6 @@ exports.saveDraft = async (req, res, next) => {
       shortName,
       body,
       creator: req.user._id,
-      categoryID,
       cover: req.file.filename,
       publish: 0,
     });

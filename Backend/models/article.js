@@ -25,18 +25,13 @@ const articleSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-
-    categoryID: {
-      type: mongoose.Types.ObjectId,
-      ref: "Category",
-      required: true,
-    },
     creator: {
       type: mongoose.Types.ObjectId,
       ref: "User",
     },
     publish: {
       type: Number,
+      default: 0,
       required: true,
     },
   },

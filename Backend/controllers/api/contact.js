@@ -2,7 +2,6 @@ const contactModel = require("../../models/contact");
 var nodemailer = require("nodemailer");
 
 exports.create = async (req, res, next) => {
-  console.log(req.body)
   try {
     await contactModel.createValidation(req.body).catch((err) => {
       err.statusCode = 400;

@@ -1,15 +1,15 @@
-import DashboardFeature from '@/Features/Dashboard/Dashboard' 
+import BlogsList from '@/Features/Dashboard/Blogs' 
 import Http from '@/Services/HttpService';
 const Blogs = ({blogsList}) => {
-    console.log(blogsList.length)
+    console.log(blogsList)
     return ( 
-       <DashboardFeature />
+       <BlogsList blogsList={blogsList}/>
      );
 }
  
 export default Blogs;
 
-export async function getStaticProps({req , query}) {
+export async function getServerSideProps({req , query}) {
   const { data } = await Http.get('/articles');
   return {
     props: {
