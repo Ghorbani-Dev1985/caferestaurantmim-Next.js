@@ -20,7 +20,7 @@ const TextAreaField = ({
         {...register(name, validationSchema)}
         type={type}
         id={name}
-        rows="10"
+        rows="6"
         autoComplete="off"
         placeholder={placeholder}
         className={`${ltr && "dir-ltr placeholder:text-right"} textField-input`}

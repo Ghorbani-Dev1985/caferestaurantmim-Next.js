@@ -48,9 +48,7 @@ const asyncActionHandlers = {
     GET_USER_INFOS : ({dispatch}) => async (action) => {
             dispatch({type: 'PENDING'})
            const getToken = await JSON.parse(typeof window !== "undefined" ? window.localStorage.getItem("user") : false);
-            console.log(getToken.accessToken)
             if(getToken) {
-                console.log("fslfks")
                 Http.get('/auth/me' , )
                 .then(({data}) => {
                  dispatch({type: 'SUCCESS' , payload: data})

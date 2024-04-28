@@ -5,9 +5,9 @@ const articleModel = require("../../models/article");
 
 exports.create = async (req, res, next) => {
   try {
-    const { title, description, body, shortName, categoryID } = req.body;
+    const { title, description, body, shortName } = req.body;
     const cover = req.file;
-
+   console.log(req.body)
     await articleModel.validation({ ...req.body, cover }).catch((err) => {
       err.statusCode = 400;
       throw err;
@@ -15,7 +15,7 @@ exports.create = async (req, res, next) => {
 
     const duplicatedShortname = await articleModel.findOne({ shortName });
     if (duplicatedShortname) {
-      return res.status(401).json({ message: "duplicated short name" });
+      return res.status(401).json({ message: "لینک مقاله تکراری می باشد" });
     }
 
     const article = await articleModel.create({
@@ -25,7 +25,6 @@ exports.create = async (req, res, next) => {
       body,
       creator: req.user._id,
       cover: req.file.filename,
-      publish: 1,
     });
 
     const populatedArticle = await article.populate("creator", "-password");

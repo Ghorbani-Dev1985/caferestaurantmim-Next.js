@@ -24,7 +24,7 @@ const NavlinkItems = [
     id: 3,
     title: "پیام‌ها",
     icon: <BiEnvelopeOpen />,
-    link: "/",
+    link: "/dashboard/contactUs",
   },
 ];
 

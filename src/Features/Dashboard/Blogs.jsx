@@ -5,7 +5,6 @@ import BlogsRow from "./BlogsRow";
 import Alert from "@/UI/Alert";
 
 const BlogsList = ({blogsList}) => {
-    console.log(blogsList)
     return ( 
         <DashboardLayout>
             {
