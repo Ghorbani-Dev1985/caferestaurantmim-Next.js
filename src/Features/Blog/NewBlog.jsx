@@ -8,6 +8,7 @@ import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 import Http from "@/Services/HttpService";
 import TextAreaField from "@/UI/TextAreaField";
+import toast from "react-hot-toast";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 const modules = {
   toolbar: [
@@ -56,24 +57,28 @@ const NewBlog = () => {
   const [body, setBody] = useState("");
   const [bodyError, setBodyError] = useState(false);
 
-  console.log();
   const NewBlogHandler = async (data) => {
-    console.log(data.cover[0])
+      console.log(data.cover[0])
     if (body.replace(/<(.|\n)*?>/g, "").trim().length !== 0) {
-      let formData = new FormData();
-      formData.append("title", data.title);
-      formData.append("description", data.description);
-      formData.append("shortName", data.shortName);
-      formData.append("cover", data.cover[0]);
-      formData.append("body", body);
-      await Http.post("/articles", formData)
+      setBodyError(false);
+      let newBlogFormData = new FormData();
+      newBlogFormData.append("title", data.title);
+      newBlogFormData.append("description", data.description);
+      newBlogFormData.append("shortName", data.shortName);
+      newBlogFormData.append("cover", data.cover[0]);
+      newBlogFormData.append("body", body);
+      await Http.post("/articles", newBlogFormData , {
+        headers: {
+          'Authorization' : `Bearer ${JSON.parse(localStorage.getItem('user')).accessToken}`,
+          'Content-Type': 'multipart/form-data'
+        }
+      })
         .then(({ data }) => {
           console.log(data);
         })
         .catch((err) => console.log(err));
     } else {
       setBodyError(true);
-      console.log("dsds");
     }
   };
 
@@ -166,13 +171,14 @@ const NewBlog = () => {
                   {...register("cover", {
                     required: "لطفا تصویر مقاله را انتخاب نمایید",
 
-                    validate:  {
-                      fileSize:file =>  file[0].size / (1024*1024) < 1 || "حداکثر حجم فایل باید کمتر از یک مگابایت باشد"
+                    validate: {
+                      fileSize: (file) =>
+                        file[0].size / (1024 * 1024) < 1 ||
+                        "حداکثر حجم فایل باید کمتر از یک مگابایت باشد",
                     },
-                  })}
+                   })}
                   onChange={({ target }) => {
-                    setCoverName(target.files[0].name);
-                    
+                    setCoverName(target.files[0].name)
                   }}
                   accept=".webp , .jpg , .png, .jpeg"
                   className="h-full absolute z-50 opacity-0"
@@ -193,7 +199,7 @@ const NewBlog = () => {
           onChange={setBody}
         />
         <span className="block text-rose-500 text-sm my-2">
-          {bodyError && "لطفا متن کامل مقاله را وارد نمایید"}
+          {bodyError ? "لطفا متن کامل مقاله را وارد نمایید" : ""}
         </span>
         <div className="flex-center my-4">
           <Button

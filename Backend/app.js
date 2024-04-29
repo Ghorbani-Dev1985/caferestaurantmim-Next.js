@@ -24,7 +24,6 @@ app.use(setHeaders);
 app.use(express.static(path.join(__dirname, "public")));
 
 
-
 //* Routes
 app.use("/api/articles", articlesRoutes);
 app.use("/api/auth", authRoutes);

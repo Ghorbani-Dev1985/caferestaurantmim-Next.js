@@ -35,7 +35,7 @@ const asyncActionHandlers = {
         .then(({data , status}) => {
             if(status === 200){
                 toast.success("ورود شما با موفقیت انجام شد")
-                typeof localStorage.setItem('user' , JSON.stringify(data))
+                localStorage.setItem('user' , JSON.stringify(data))
                 dispatch({type: 'SUCCESS'})
                 Router.replace("dashboard/blogs")
             }
@@ -46,7 +46,6 @@ const asyncActionHandlers = {
         })
     },
     GET_USER_INFOS : ({dispatch}) => async (action) => {
-            dispatch({type: 'PENDING'})
            const getToken = await JSON.parse(typeof window !== "undefined" ? window.localStorage.getItem("user") : false);
             if(getToken) {
                 Http.get('/auth/me' , )

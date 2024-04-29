@@ -1,7 +1,6 @@
 import React from "react";
 import Table from "@/UI/Table";
-import { Button, Chip, checkboxGroup } from "@nextui-org/react";
-import Image from "next/image";
+import { Button, Chip } from "@nextui-org/react";
 import { IoCheckmarkCircleSharp } from "react-icons/io5";
 import { RiDraftFill } from "react-icons/ri";
 import ModalPlacement from "@/UI/ModalPlacement";

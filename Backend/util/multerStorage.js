@@ -4,7 +4,7 @@ const multer = require('multer');
 
 module.exports = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, '..', 'public', 'covers'));
+    cb(null, path.join(__dirname, '..', 'public', 'courses', 'covers'));
   },
   filename: (req, file, cb) => {
     const sha256 = crypto.createHash('SHA256');
