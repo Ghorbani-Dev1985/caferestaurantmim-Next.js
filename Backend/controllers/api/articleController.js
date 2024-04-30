@@ -111,7 +111,6 @@ exports.getOne = async (req, res, next) => {
   try {
     const article = await articleModel
       .findOne({ shortName: req.params.shortName })
-      .populate("categoryID")
       .populate("creator", "-password")
       .lean();
 
