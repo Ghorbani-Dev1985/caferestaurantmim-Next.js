@@ -17,6 +17,14 @@ const BlogsRow = ({ blog, index }) => {
   const router = useRouter()
   const {_id , body, cover, description, publish, shortName, title } = blog;
   const src = `${process.env.NEXT_PUBLIC_DOMAINAPI_URL}${cover}`;
+  const PublishBlogHandler = async (id) => {
+      await Http.put('/articles' , {id})
+      .then(({data}) => {
+        toast.success(data.message)
+        RouterPush(router)
+      })
+      .catch((err) => console.log(err))
+  }
   const DeleteBlogHandler = async (id) => {
     await Http.delete(`/articles/${id}`)
     .then(({data}) => {
@@ -72,7 +80,8 @@ const BlogsRow = ({ blog, index }) => {
                 startContent={<RiDraftFill size={18} />}
                 variant="faded"
                 color="warning"
-                className="border border-amber-500"
+                className="border border-amber-500 cursor-pointer"
+                onClick={() => PublishBlogHandler(_id)}
               >
                 پیش نویس
               </Chip>

@@ -20,7 +20,8 @@ router
     isAdminMiddleware,
     articleController.create
   )
-  .get(articleController.getAll);
+  .get(articleController.getAll)
+  .put(articleController.publishedArticle);
 
 router.route("/:shortName").get(articleController.getOne);
 
