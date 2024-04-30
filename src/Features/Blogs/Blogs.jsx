@@ -1,16 +1,15 @@
 import React from "react";
 import data from "@/Data/data.json";
 import BlogsCard from "./BlogCard";
-const Blogs = ({blog}) => {
-  console.log(blog)
-  const {} = blog
+const Blogs = ({blogs}) => {
+  const filteredBlog = blogs.filter(blog => blog.publish === true);
   return (
     <section className="container my-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {data.blogs.map(({ id, src, title }) => {
+        {filteredBlog.map((blog) => {
           return (
-            <React.Fragment key={id}>
-              <BlogsCard id={id} src={src} title={title}/>
+            <React.Fragment key={blog._id}>
+              <BlogsCard blog={blog}/>
             </React.Fragment>
           );
         })}
