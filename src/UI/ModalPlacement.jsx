@@ -6,8 +6,12 @@ const ModalPlacement = ({children , title , icon , btnText}) => {
         <Button onPress={onOpen} variant="bordered" startContent={icon} className="max-w-fit bg-sky-100 border-none">{btnText}</Button>
         <Modal 
         isOpen={isOpen} 
-        placement="center"
-        onOpenChange={onOpenChange} 
+        placement="auto"
+        onOpenChange={onOpenChange}
+        backdrop="blur"
+        size="4xl"
+        scrollBehavior="inside" 
+        className="overflow-hidden"
         classNames={{closeButton: "left-1 right-auto top-4"}}
         >
         <ModalContent>

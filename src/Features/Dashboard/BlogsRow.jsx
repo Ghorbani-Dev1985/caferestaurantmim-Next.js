@@ -12,6 +12,7 @@ import Http from "@/Services/HttpService";
 import toast from "react-hot-toast";
 import { useRouter } from "next/router";
 import RouterPush from "@/Hooks/RouterPush";
+import DOMPurify from "isomorphic-dompurify";
 const BlogsRow = ({ blog, index }) => {
   const router = useRouter()
   const {_id , body, cover, description, publish, shortName, title } = blog;
@@ -53,7 +54,7 @@ const BlogsRow = ({ blog, index }) => {
               icon={<BiShow className="size-8 fill-sky-500" />}
               title="بدنه"
             >
-              {body}
+             <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(body) }}></div>
             </ModalPlacement>
           </td>
           <td className="px-6 py-4">

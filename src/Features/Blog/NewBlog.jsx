@@ -9,6 +9,7 @@ import "react-quill/dist/quill.snow.css";
 import Http from "@/Services/HttpService";
 import TextAreaField from "@/UI/TextAreaField";
 import toast from "react-hot-toast";
+
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 const modules = {
   toolbar: [
@@ -56,27 +57,28 @@ const NewBlog = () => {
   const [coverName, setCoverName] = useState("");
   const [body, setBody] = useState("");
   const [bodyError, setBodyError] = useState(false);
-
   const NewBlogHandler = async (data) => {
-      console.log(data.cover[0])
+    console.log(data.cover[0])
     if (body.replace(/<(.|\n)*?>/g, "").trim().length !== 0) {
       setBodyError(false);
-      let newBlogFormData = new FormData();
-      newBlogFormData.append("title", data.title);
-      newBlogFormData.append("description", data.description);
-      newBlogFormData.append("shortName", data.shortName);
-      newBlogFormData.append("cover", data.cover[0]);
-      newBlogFormData.append("body", body);
-      await Http.post("/articles", newBlogFormData , {
+     let newBlogFormData = new FormData();
+     newBlogFormData.append("title", data.title);
+     newBlogFormData.append("description", data.description);
+     newBlogFormData.append("shortName", data.shortName);
+     newBlogFormData.append("cover", data.cover[0]);
+     newBlogFormData.append("body", body);
+     await Http.post("/articles/draft", newBlogFormData , {
         headers: {
-          'Authorization' : `Bearer ${JSON.parse(localStorage.getItem('user')).accessToken}`,
           'Content-Type': 'multipart/form-data'
         }
       })
         .then(({ data }) => {
-          console.log(data);
+          toast.success(data.message)
+          reset()
+          setBody("")
+          setCoverName("")
         })
-        .catch((err) => console.log(err));
+        .catch((err) => toast.error(err.message));
     } else {
       setBodyError(true);
     }
@@ -99,8 +101,8 @@ const NewBlog = () => {
                 message: "حداقل ۳ کاراکتر وارد نمایید  ",
               },
               maxLength: {
-                value: 30,
-                message: "حداکثر ۳۰ کاراکتر وارد نمایید",
+                value: 50,
+                message: "حداکثر ۵۰ کاراکتر وارد نمایید",
               },
             }}
             errors={errors}
@@ -173,10 +175,10 @@ const NewBlog = () => {
 
                     validate: {
                       fileSize: (file) =>
-                        file[0].size / (1024 * 1024) < 1 ||
-                        "حداکثر حجم فایل باید کمتر از یک مگابایت باشد",
+                         file[0].size / (1024 * 1024) < 1 ||
+                       "حداکثر حجم فایل باید کمتر از یک مگابایت باشد",
                     },
-                   })}
+                    })}
                   onChange={({ target }) => {
                     setCoverName(target.files[0].name)
                   }}

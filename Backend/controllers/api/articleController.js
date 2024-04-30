@@ -7,7 +7,7 @@ exports.create = async (req, res, next) => {
   try {
     const { title, description, body, shortName } = req.body;
     const cover = req.file;
-  console.log(cover)
+  console.log("file" , cover)
     await articleModel.validation({ ...req.body, cover }).catch((err) => {
       err.statusCode = 400;
       throw err;
@@ -15,7 +15,7 @@ exports.create = async (req, res, next) => {
 
     const duplicatedShortname = await articleModel.findOne({ shortName });
     if (duplicatedShortname) {
-      return res.status(401).json({ message: "duplicated short name" });
+      return res.status(401).json({ message: "لینک وارد شده تکراری می باشد" });
     }
 
     const article = await articleModel.create({
@@ -25,8 +25,8 @@ exports.create = async (req, res, next) => {
       body,
       creator: req.user._id,
       cover: req.file.filename,
-      publish: 1,
     });
+
 
     const populatedArticle = await article.populate("creator", "-password");
 
@@ -42,10 +42,11 @@ exports.saveDraft = async (req, res, next) => {
 
     const duplicatedShortname = await articleModel.findOne({ shortName });
     if (duplicatedShortname) {
-      return res.status(401).json({ message: "duplicated short name" });
+      return res.status(401).json({ message: "لینک وارد شده تکراری می باشد" });
     }
     
     const cover = req.file;
+    console.log(cover)
     await articleModel.validation({ ...req.body, cover }).catch((err) => {
       err.statusCode = 400;
       throw err;
@@ -58,12 +59,11 @@ exports.saveDraft = async (req, res, next) => {
       body,
       creator: req.user._id,
       cover: req.file.filename,
-      publish: 0,
     });
 
     const draftedArticle = await article.populate("creator", "-password");
 
-    return res.status(201).json(draftedArticle);
+    return res.status(201).json({ message: "مقاله با موفقیت ثبت شد" , draftedArticle});
   } catch (error) {
     next(error);
   }
@@ -77,7 +77,7 @@ exports.getAll = async (req, res, next) => {
       .sort({ _id: -1 });
 
     if (articles.length === 0) {
-      return res.status(404).json({ message: "No Article Available!" });
+      return res.status(404).json({ message: "مقاله ای موجود نمی باشد" });
     }
 
     return res.json(articles);
@@ -95,7 +95,7 @@ exports.getOne = async (req, res, next) => {
       .lean();
 
     if (!article) {
-      return res.status(404).json({ message: "Article Not Found!" });
+      return res.status(404).json({ message: "چنین مقاله ای یافت نگردید" });
     }
 
     res.json(article);

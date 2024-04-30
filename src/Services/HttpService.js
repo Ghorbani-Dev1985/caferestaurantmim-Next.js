@@ -4,7 +4,6 @@ const BASE_URL = "http://localhost:5000/api"
 
 const Api = axios.create({
     baseURL: BASE_URL,
-    headers: { "Content-Type" : "application/json"}
 })
 
 Api.interceptors.request.use(
@@ -12,7 +11,7 @@ Api.interceptors.request.use(
         const getToken = JSON.parse(typeof window !== "undefined" ? window.localStorage.getItem("user") : false);
         if (getToken !== null) {
           config.headers.Authorization = `Bearer ${getToken.accessToken}`;
-          config.headers["Content-Type"] = "application/json";
+        
         }
         return config;
       },

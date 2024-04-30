@@ -30,8 +30,8 @@ const articleSchema = new mongoose.Schema(
       ref: "User",
     },
     publish: {
-      type: Number,
-      default: 0,
+      type: Boolean,
+      default: false,
       required: true,
     },
   },
