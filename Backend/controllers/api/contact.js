@@ -106,7 +106,7 @@ exports.remove = async (req, res, next) => {
     if (!deletedContact) {
       return res.status(404).json({ message: "پیام مورد نظر یافت نگردید" });
     }
-    return res.json(deletedContact);
+    return res.json({ message: "پیام مورد نظر با موفقیت حذف شد" , deletedContact});
   } catch (error) {
     next(error);
   }

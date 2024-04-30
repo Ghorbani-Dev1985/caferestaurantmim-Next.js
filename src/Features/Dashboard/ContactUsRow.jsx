@@ -11,6 +11,7 @@ import Http from "@/Services/HttpService";
 import toast from "react-hot-toast";
 import { useRouter } from "next/router";
 import RouterPush from "@/Hooks/RouterPush";
+import ConfirmModal from "@/UI/ConfimModal";
 const ContactUSRow = ({ contact, index }) => {
   const router = useRouter()
   const {_id, answer, body, createdAt, name, phone } = contact;
@@ -23,6 +24,15 @@ const ContactUSRow = ({ contact, index }) => {
      .catch((err) => {
       toast.error(err.message)
      })
+  }
+  const DeleteContactUsHandler = async (id) => {
+ console.log(id)
+    await Http.delete(`/contact/${id}`)
+    .then(({data}) => {
+      toast.success(data.message)
+      RouterPush(router)
+    })
+    .catch((err) => toast.error(err.message))
   }
   return (
     <>
@@ -63,14 +73,9 @@ const ContactUSRow = ({ contact, index }) => {
             )}
           </td>
           <td>
-            <Button
-              isIconOnly
-              color="danger"
-              variant="faded"
-              className="border-slate-200"
-            >
-              <HiOutlineTrash className="size-5" />
-            </Button>
+           <ConfirmModal btnIcon={<HiOutlineTrash className="size-5" />} confirmBtnText="حذف" titleText="حذف پیام" confirmBtnHandler={() => DeleteContactUsHandler(_id)}>
+              آیا از حذف پیام <span className="text-sky-500 mx-1">{name}</span> مطمعن هستید؟
+           </ConfirmModal>
           </td>
         </tr>
       </Table.Row>

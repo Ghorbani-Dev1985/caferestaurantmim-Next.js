@@ -15,7 +15,7 @@ exports.articleValidator = yup.object().shape({
   cover: yup.object().shape({
     size: yup
       .number()
-      .max(30 * 1024 * 1024, "حجم تصویر نباید بیشتر از 30 مگابایت باشد"),
+      .max(1 * 1024 * 1024, "حجم تصویر نباید بیشتر از ۱ مگابایت باشد"),
     mimetype: yup
       .string()
       .oneOf(
