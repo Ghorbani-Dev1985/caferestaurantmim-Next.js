@@ -23,7 +23,7 @@ const ConfirmModal = ({children , btnIcon , confirmBtnText , titleText ,confirmB
            <>
              <ModalHeader className="flex-center bg-slate-50 border-b border-b-slate-200">{titleText}</ModalHeader>
              <ModalBody>
-               <p className="flex-center p-4 font-extrabold"> 
+               <p className="text-center leading-10 p-4 font-extrabold"> 
                  {children}
                </p>
              </ModalBody>

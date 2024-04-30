@@ -110,7 +110,7 @@ exports.remove = async (req, res, next) => {
       _id: req.params.id,
     });
     if (!deletedArticle) {
-      return res.status(404).json({ message: "Article Not Found!" });
+      return res.status(404).json({ message: "مقاله مورد نظر یافت نگردید" });
     }
 
     const imgPath = path.join(
@@ -128,7 +128,7 @@ exports.remove = async (req, res, next) => {
       }
     });
 
-    return res.json(deletedArticle);
+    return res.json({ message: "مقاله مورد نظر با موفقیت حذف شد" , deletedArticle });
   } catch (error) {
     next(error);
   }

@@ -26,7 +26,6 @@ const ContactUSRow = ({ contact, index }) => {
      })
   }
   const DeleteContactUsHandler = async (id) => {
- console.log(id)
     await Http.delete(`/contact/${id}`)
     .then(({data}) => {
       toast.success(data.message)
