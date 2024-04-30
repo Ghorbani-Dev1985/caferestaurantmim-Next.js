@@ -1,17 +1,17 @@
 import React from "react";
-import data from "@/Data/data.json";
 import Link from "next/link";
-import { BlogsCard } from "@/Features/Blogs/Blogs";
 import Title from "@/UI/Title";
-const BlogsList = () => {
+import BlogsCard from "../Blogs/BlogCard";
+const BlogsList = ({blogs}) => {
+  const filteredBlog = blogs.filter(blog => blog.publish === true);
   return (
     <>
       <Title text=" خواندنی ها" />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {data.blogs.slice(0, 2).map(({ id, src, title }) => {
+        {filteredBlog.slice(0,3).map((blog) => {
           return (
-            <React.Fragment key={id}>
-              <BlogsCard id={id} src={src} title={title} />
+            <React.Fragment key={blog._id}>
+              <BlogsCard blog={blog} />
             </React.Fragment>
           );
         })}

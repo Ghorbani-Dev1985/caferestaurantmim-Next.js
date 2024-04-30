@@ -6,7 +6,8 @@ import BlogsList from "@/Features/Home/BlogsList";
 import ImageGallery from "@/Features/Home/ImageGallery";
 import { AboutUsItems } from "./AboutUs";
 import Layout from "@/Containers/Layout";
-const HomePage = () => {
+import Http from "@/Services/HttpService";
+const HomePage = ({blogs}) => {
     return (
         <Layout>
         <main className='min-h-screen'>
@@ -15,7 +16,7 @@ const HomePage = () => {
          <QuickAccess />
          <Menus />
          <AboutUsItems />
-         <BlogsList />
+         <BlogsList blogs={blogs}/>
         </section>
         <AboutUS />
          <ImageGallery />
@@ -25,3 +26,8 @@ const HomePage = () => {
 }
  
 export default HomePage;
+
+export async function getStaticProps() {
+    const { data } = await Http.get("/articles");
+    return { props: { blogs: data } , revalidate : 30};
+  }
