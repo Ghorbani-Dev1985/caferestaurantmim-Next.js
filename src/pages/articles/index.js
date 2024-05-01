@@ -13,7 +13,7 @@ const Blogs = ({blogs}) => {
  
 export default Blogs;
 
-export async function getStaticProps() {
+export async function getStaticProps({params}) {
     const { data } = await Http.get("/articles");
     return { props: { blogs: data } , revalidate : 30};
   }

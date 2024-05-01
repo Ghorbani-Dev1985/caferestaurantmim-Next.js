@@ -1,6 +1,6 @@
 import React from "react";
 import Table from "@/UI/Table";
-import { Button, Chip } from "@nextui-org/react";
+import { Button, Chip, TableCell, TableRow } from "@nextui-org/react";
 import Image from "next/image";
 import { IoCheckmarkCircleSharp } from "react-icons/io5";
 import { RiDraftFill } from "react-icons/ri";
@@ -14,28 +14,42 @@ import { useRouter } from "next/router";
 import RouterPush from "@/Hooks/RouterPush";
 import DOMPurify from "isomorphic-dompurify";
 const BlogsRow = ({ blog, index }) => {
-  const router = useRouter()
-  const {_id , body, cover, description, publish, shortName, title } = blog;
+  console.log(blog)
+  const router = useRouter();
+  const { _id, body, cover, description, publish, shortName, title } = blog;
   const src = `${process.env.NEXT_PUBLIC_DOMAINAPI_URL}${cover}`;
   const PublishBlogHandler = async (id) => {
-      await Http.put('/articles' , {id})
-      .then(({data}) => {
-        toast.success(data.message)
-        RouterPush(router)
+    await Http.put("/articles", { id })
+      .then(({ data }) => {
+        toast.success(data.message);
+        RouterPush(router);
       })
-      .catch((err) => console.log(err))
-  }
+      .catch((err) => console.log(err));
+  };
   const DeleteBlogHandler = async (id) => {
     await Http.delete(`/articles/${id}`)
-    .then(({data}) => {
-      toast.success(data.message)
-      RouterPush(router)
-    })
-    .catch((err) => toast.error(err.message))
-  }
+      .then(({ data }) => {
+        toast.success(data.message);
+        RouterPush(router);
+      })
+      .catch((err) => toast.error(err.message));
+  };
   return (
     <>
-      <Table.Row>
+       <TableRow>
+        <TableCell>{+index + 1}</TableCell>
+         <TableCell>
+        <Image
+              width={100}
+              height={100}
+              alt="ghorbani-dev.ir"
+              src={src}
+              className="object-fill rounded-lg"
+            />
+        </TableCell> 
+       </TableRow>
+      
+      {/* <Table.Row>
         <tr className="bg-secondary-50/50 text-center border-b last:border-b-0 text-secondary-700 hover:bg-slate-100 dark:hover:bg-secondary-500 px-6 py-4 transition-colors">
           <th className="px-6 py-4">{index + 1}</th>
           <td className="px-6 py-4">
@@ -62,7 +76,9 @@ const BlogsRow = ({ blog, index }) => {
               icon={<BiShow className="size-8 fill-sky-500" />}
               title="بدنه"
             >
-             <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(body) }}></div>
+              <div
+                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(body) }}
+              ></div>
             </ModalPlacement>
           </td>
           <td className="px-6 py-4">
@@ -88,12 +104,18 @@ const BlogsRow = ({ blog, index }) => {
             )}
           </td>
           <td>
-            <ConfirmModal btnIcon={<HiOutlineTrash className="size-5" />} confirmBtnText="حذف" titleText="حذف مقاله" confirmBtnHandler={() => DeleteBlogHandler(_id)}>
-              آیا از حذف مقاله با عنوان <span className="text-sky-500 mx-1">{title}</span> مطمعن هستید؟
-           </ConfirmModal>
+            <ConfirmModal
+              btnIcon={<HiOutlineTrash className="size-5" />}
+              confirmBtnText="حذف"
+              titleText="حذف مقاله"
+              confirmBtnHandler={() => DeleteBlogHandler(_id)}
+            >
+              آیا از حذف مقاله با عنوان{" "}
+              <span className="text-sky-500 mx-1">{title}</span> مطمعن هستید؟
+            </ConfirmModal>
           </td>
         </tr>
-      </Table.Row>
+      </Table.Row> */}
     </>
   );
 };
