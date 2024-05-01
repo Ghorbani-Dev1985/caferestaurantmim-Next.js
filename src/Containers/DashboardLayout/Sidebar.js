@@ -7,7 +7,7 @@ import { BiEnvelopeOpen, BiListPlus } from "react-icons/bi";
 import { HiOutlineNewspaper } from "react-icons/hi";
 import { useRouter } from "next/router";
 
-const NavlinkItems = [
+export const NavlinkItems = [
   {
     id: 1,
     title: "مقاله ها",
@@ -31,7 +31,7 @@ const NavlinkItems = [
 const Sidebar = () => {
   const { pathname } = useRouter();
   return (
-    <section className="flex flex-col items-center p-6">
+    <section className="hidden md:flex flex-col items-center p-6">
       <Link href="/">
         <Image
           width={279}

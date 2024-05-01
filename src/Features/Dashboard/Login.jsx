@@ -25,7 +25,7 @@ const LoginPage = () => {
   };
   console.log(user)
     useEffect(() => {
-      if(user) router.push("/")
+      if(user) router.push("/dashboard/blogs")
    },[user])
   return (
     <main className="w-full h-screen bg-gradient-to-t from-primary-500 to-primary-50">

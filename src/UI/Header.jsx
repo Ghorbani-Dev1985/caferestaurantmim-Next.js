@@ -8,7 +8,6 @@ import {
   NavbarMenu,
   Divider,
 } from "@nextui-org/react";
-import Logo from "@/Images/Logo/logo2.webp";
 import { HiPhone } from "react-icons/hi";
 import { HiDeviceMobile } from "react-icons/hi";
 import { BiLogoInstagram, BiMenuAltRight } from "react-icons/bi";
@@ -105,7 +104,7 @@ const Header = () => {
               width={116}
               height={55}
               alt="ghorbani-dev.ir"
-              src={Logo}
+              src="/Logo/logo2.webp"
               className="object-fill"
             />
           </NavbarBrand>
@@ -144,8 +143,8 @@ const Header = () => {
          {
           isMenuOpen &&
           <NavbarMenu
-            
-            className="px-0 gap-0 pt-16"
+          onClick={() => setIsMenuOpen(false)}
+            className="px-0 gap-0 pt-24"
           >
             {menuItems.map(({ id, title, link }) => (
               <React.Fragment key={id}>
