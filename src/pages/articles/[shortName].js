@@ -1,7 +1,9 @@
 import Layout from "@/Containers/Layout";
 import BlogDetails from '@/Features/Blog/Blog'
+import useTitle from "@/Hooks/useTitle";
 import Http from "@/Services/HttpService";
 const Blog = ({blog}) => {
+  const title = useTitle(`${blog.title} | کافه رستوران میم  `)
     return ( 
         <Layout>
             <BlogDetails blog={blog}/>

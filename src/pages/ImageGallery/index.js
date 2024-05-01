@@ -3,7 +3,9 @@ import ImageGalleryUi from '@/UI/ImageGallery'
 import data from "@/Data/data.json";
 import Image from "next/image";
 import Layout from '@/Containers/Layout';
+import useTitle from '@/Hooks/useTitle';
 const ImageGallery = () => {
+  const title = useTitle(" گالری تصاویر | کافه رستوران میم")
     const [clickedImg, setClickedImg] = useState(null);
     const [currentIndex, setCurrentIndex] = useState(null);
     const handleClick = (id, href) => {

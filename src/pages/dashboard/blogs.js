@@ -1,7 +1,8 @@
 import BlogsList from '@/Features/Dashboard/Blogs' 
+import useTitle from '@/Hooks/useTitle';
 import Http from '@/Services/HttpService';
 const Blogs = ({blogsList}) => {
-    console.log(blogsList)
+   const title = useTitle("مقاله ها | کافه رستوران میم")
     return ( 
        <BlogsList blogsList={blogsList}/>
      );

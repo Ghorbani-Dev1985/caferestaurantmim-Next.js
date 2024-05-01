@@ -4,7 +4,9 @@ import { AddressItems } from "@/UI/Footer";
 import AddressMap from "@/UI/AddressMap";
 import ImageMorphing from "@/UI/ImageMorphing";
 import Layout from "@/Containers/Layout";
+import useTitle from "@/Hooks/useTitle";
 const AboutUs = () => {
+  const title = useTitle(" درباره رستوران | کافه رستوران میم")
   return (
     <Layout>
     <section className="container relative mt-6">

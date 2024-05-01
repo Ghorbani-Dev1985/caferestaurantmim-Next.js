@@ -7,7 +7,9 @@ import ImageGallery from "@/Features/Home/ImageGallery";
 import { AboutUsItems } from "./AboutUs";
 import Layout from "@/Containers/Layout";
 import Http from "@/Services/HttpService";
+import useTitle from "@/Hooks/useTitle";
 const HomePage = ({blogs}) => {
+    const title = useTitle(" کافه رستوران میم")
     return (
         <Layout>
         <main className='min-h-screen'>
