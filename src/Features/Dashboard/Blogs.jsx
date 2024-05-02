@@ -1,16 +1,7 @@
 import DashboardLayout from "@/Containers/DashboardLayout";
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback } from "react";
 import Alert from "@/UI/Alert";
-import {
-  Table,
-  TableHeader,
-  TableColumn,
-  TableBody,
-  Pagination,
-  TableRow,
-  TableCell,
-  Chip,
-} from "@nextui-org/react";
+import {TableColumn,Chip,} from "@nextui-org/react";
 import Http from "@/Services/HttpService";
 import { useRouter } from "next/router";
 import RouterPush from "@/Hooks/RouterPush";
@@ -22,16 +13,10 @@ import { IoCheckmarkCircleSharp } from "react-icons/io5";
 import { RiDraftFill } from "react-icons/ri";
 import ConfirmModal from "@/UI/ConfimModal";
 import { HiOutlineTrash } from "react-icons/hi2";
+import toast from "react-hot-toast";
+import CustomTable from "@/UI/CustomTable";
 
 const BlogsList = ({ blogsList }) => {
-  const [page, setPage] = useState(1);
-  const rowsPerPage = 10;
-  const pages = Math.ceil(blogsList.length / rowsPerPage);
-  const blogs = useMemo(() => {
-   const start = (page - 1) * rowsPerPage;
-   const end = start + rowsPerPage;
-   return blogsList.slice(start, end);
- }, [page, blogsList]);
  const router = useRouter();
  const PublishBlogHandler = async (id) => {
    await Http.put("/articles", { id })
@@ -49,8 +34,8 @@ const BlogsList = ({ blogsList }) => {
      })
      .catch((err) => toast.error(err.message));
  };
- const renderCell = useCallback((blog, columnKey) => {
-   const cellValue = blog[columnKey];
+ const renderCell = useCallback((item, columnKey) => {
+   const cellValue = item[columnKey];
    switch (columnKey) {
      case "cover":
        return (
@@ -58,19 +43,17 @@ const BlogsList = ({ blogsList }) => {
          width={100}
          height={100}
          alt="ghorbani-dev.ir"
-         src={`${process.env.NEXT_PUBLIC_DOMAINAPI_URL}${blog.cover}`}
+         src={`${process.env.NEXT_PUBLIC_DOMAINAPI_URL}${item.cover}`}
          className="object-fill rounded-lg"
        />
        );
      case "title":
-       return (
-       
-           blog.title
-       
+       return (    
+           item.title
        );
      case "shortName":
        return (
-          blog.shortName    
+          item.shortName    
        );
         case "description":
        return (
@@ -78,7 +61,7 @@ const BlogsList = ({ blogsList }) => {
          icon={<BiShow className="size-8 fill-sky-500" />}
          title="توضیحات"
        >
-         {blog.description}
+         {item.description}
        </ModalPlacement>   
        );
        case "body" :
@@ -88,14 +71,14 @@ const BlogsList = ({ blogsList }) => {
          title="بدنه"
        >
            <div
-               dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(blog.body) }}
+               dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(item.body) }}
              ></div>
-         {blog.body}
+         {item.body}
        </ModalPlacement>  
          );
       case "publish" :
          return (
-           blog.publish ? (
+           item.publish ? (
              <Chip
                startContent={<IoCheckmarkCircleSharp size={18} />}
                variant="faded"
@@ -110,7 +93,7 @@ const BlogsList = ({ blogsList }) => {
                variant="faded"
                color="warning"
                className="border border-amber-500 cursor-pointer"
-               onClick={() => PublishBlogHandler(blog._id)}
+               onClick={() => PublishBlogHandler(item._id)}
              >
                پیش نویس
              </Chip>
@@ -122,10 +105,10 @@ const BlogsList = ({ blogsList }) => {
            btnIcon={<HiOutlineTrash className="size-5" />}
            confirmBtnText="حذف"
            titleText="حذف مقاله"
-           confirmBtnHandler={() => DeleteBlogHandler(blog._id)}
+           confirmBtnHandler={() => DeleteBlogHandler(item._id)}
          >
-           آیا از حذف مقاله با عنوان
-           {/* <span className="text-sky-500 mx-1">{blog.title}</span> مطمعن هستید؟ */}
+          <p className="flex-center gap-1.5"> آیا از حذف مقاله با عنوان  
+           <span className="text-sky-500">{item.title}</span> مطمعن هستید؟</p>
          </ConfirmModal>
            
          );
@@ -136,35 +119,7 @@ const BlogsList = ({ blogsList }) => {
   return (
     <DashboardLayout>
       {blogsList.length ? (
-        <Table
-          aria-label="Example table with client async pagination"
-          bottomContent={
-              <div className="flex w-full justify-center">
-                {
-                  pages > 1 &&
-                <Pagination
-                  isCompact
-                  showControls
-                  showShadow
-                  color="primary"
-                  page={page}
-                  total={pages}
-                  onChange={(page) => setPage(page)}
-                  classNames={{
-                    prev: "rotate-180",
-                    next: "rotate-180",
-                    forwardIcon: "rotate-180",
-                  }}
-                />
-                }
-              </div>
-          }
-          classNames={{
-            wrapper: "min-h-[222px]",
-            th : "first:rounded-tl-none first:rounded-bl-none first:rounded-tr-lg first:rounded-br-lg last:rounded-tr-none last:rounded-br-none last:rounded-tl-lg last:rounded-bl-lg",
-          }}
-        >
-          <TableHeader>
+       <CustomTable itemsArray={blogsList} renderCell={renderCell}>
             <TableColumn key="cover">تصویر</TableColumn>
             <TableColumn key="title">عنوان</TableColumn>
             <TableColumn key="shortName">لینک</TableColumn>
@@ -172,19 +127,7 @@ const BlogsList = ({ blogsList }) => {
             <TableColumn key="body">بدنه</TableColumn>
             <TableColumn key="publish"> وضعیت انتشار</TableColumn>
             <TableColumn key="act"> عملیات</TableColumn>
-          </TableHeader>
-         
-          <TableBody
-           items={blogs}
-          >
-     {(blog) => (
-              <TableRow key={blog._id}>
-                 {(columnKey) => <TableCell>{renderCell(blog, columnKey)}</TableCell>}
-                
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
+       </CustomTable>
       ) : (
         <Alert alertText="تاکنون مقاله ای ثبت نگردیده است" />
       )}
