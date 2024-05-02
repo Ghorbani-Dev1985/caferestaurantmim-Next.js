@@ -2,6 +2,7 @@ import Layout from "@/Containers/Layout";
 import BlogDetails from '@/Features/Blog/Blog'
 import useTitle from "@/Hooks/useTitle";
 import Http from "@/Services/HttpService";
+
 const Blog = ({blog}) => {
   const title = useTitle(`${blog.title} | کافه رستوران میم  `)
     return ( 
@@ -19,17 +20,16 @@ export async function getStaticPaths(){
   const filteredBlog = data.filter(blog => blog.publish === true);
  const paths = filteredBlog.map((blog) => {
       return {
-          params: {shortName: `${blog.shortName || ""}`},
+          params: {shortName: `${blog.shortName}`},
       }
   })
   return {
     paths,
-    fallback: true
+    fallback: false
   }
 }
   
   export async function getStaticProps({params}) {
     const { data } = await Http.get(`/articles/${params.shortName}`);
-    console.log("Data" , data)
-    return { props: { blog: data } , revalidate : 30 };
+    return { props: { blog: data } };
   }

@@ -6,62 +6,62 @@ import Title from "@/UI/Title";
 const MainMenuItems = [
   {
     id: 1,
-    src: "/RestaurantMenu/RestaurantMenu-01.webp",
+    src: "RestaurantMenu-01.webp",
     link: "appetizer",
   },
   {
     id: 2,
-    src: "/RestaurantMenu/RestaurantMenu-02.webp",
+    src: "RestaurantMenu-02.webp",
     link: "pizza",
   },
   {
     id: 3,
-    src: "/RestaurantMenu/RestaurantMenu-03.webp",
+    src: "RestaurantMenu-03.webp",
     link: "sandwich",
   },
   {
     id: 4,
-    src: "/RestaurantMenu/RestaurantMenu-04.webp",
+    src: "RestaurantMenu-04.webp",
     link: "burger",
   },
   {
     id: 5,
-    src: "/RestaurantMenu/RestaurantMenu-05.webp",
+    src: "RestaurantMenu-05.webp",
     link: "steak",
   },
   {
     id: 6,
-    src: "/RestaurantMenu/RestaurantMenu-06.webp",
+    src: "RestaurantMenu-06.webp",
     link: "pasta",
   },
   {
     id: 7,
-    src: "/RestaurantMenu/RestaurantMenu-10.webp",
+    src: "RestaurantMenu-10.webp",
     link: "appetizer",
   },
   {
     id: 8,
-    src: "/RestaurantMenu/RestaurantMenu-07.webp",
+    src: "RestaurantMenu-07.webp",
     link: "appetizer",
   },
   {
     id: 9,
-    src: "/RestaurantMenu/RestaurantMenu-08.webp",
+    src: "RestaurantMenu-08.webp",
     link: "appetizer",
   },
   {
     id: 10,
-    src: "/RestaurantMenu/RestaurantMenu-09.webp",
+    src: "RestaurantMenu-09.webp",
     link: "appetizer",
   },
   {
     id: 11,
-    src: "/RestaurantMenu/RestaurantMenu-11.webp",
+    src: "RestaurantMenu-11.webp",
     link: "drinks",
   },
   {
     id: 12,
-    src: "/RestaurantMenu/RestaurantMenu-12.webp",
+    src: "RestaurantMenu-12.webp",
     link: "/cafeMenu#hot",
   },
 ];
@@ -77,7 +77,7 @@ function QuickAccess() {
                 width={512}
                 height={512}
                 alt="ghorbani-dev.ir"
-                src={src}
+                src={`/RestaurantMenu/${src}`}
                 className="object-fill hover:scale-90 hover:opacity-80 transition-all ease-linear duration-250"
               />
             </Link>

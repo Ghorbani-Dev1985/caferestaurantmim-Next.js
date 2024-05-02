@@ -3,7 +3,6 @@ import Link from "next/link"
 import { HiArrowNarrowLeft } from "react-icons/hi"
 
 const BlogsCard = ({blog}) => {
-    console.log(blog)
     const {title , shortName , cover} = blog
     const src = `${process.env.NEXT_PUBLIC_DOMAINAPI_URL}${cover}`;
     return(
