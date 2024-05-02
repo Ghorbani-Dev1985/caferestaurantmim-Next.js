@@ -6,6 +6,7 @@ import { Navigation, Autoplay, A11y } from "swiper/modules";
 import Image from "next/image";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 
+
 const SlideImageItems = [
   {
     id: 1,
@@ -63,11 +64,13 @@ const Slider = () => {
         }}
         className="mySwiper mb-5 relative"
       >
+
         {SlideImageItems.map(({ id, href }) => (
           <SwiperSlide key={id}>
-            <Image
+             <Image
               width="1920"
               height="700"
+              priority
               alt="ghorbani-dev.ir"
               src={href}
               className="object-fill rounded-none"
