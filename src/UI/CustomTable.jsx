@@ -36,7 +36,8 @@ const CustomTable = ({children , renderCell , itemsArray}) => {
         }
         classNames={{
           wrapper: "min-h-[222px]",
-          th : "first:rounded-tl-none first:rounded-bl-none first:rounded-tr-lg first:rounded-br-lg last:rounded-tr-none last:rounded-br-none last:rounded-tl-lg last:rounded-bl-lg",
+          th : "text-center first:rounded-tl-none first:rounded-bl-none first:rounded-tr-lg first:rounded-br-lg last:rounded-tr-none last:rounded-br-none last:rounded-tl-lg last:rounded-bl-lg",
+          td: "text-center"
         }}
       >
         <TableHeader>

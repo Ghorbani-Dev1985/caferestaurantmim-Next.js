@@ -1,50 +1,118 @@
 import DashboardLayout from "@/Containers/DashboardLayout";
 import Alert from "@/UI/Alert";
-import React from "react";
-import ContactUsRow from "./ContactUsRow";
-import Table from "@/UI/Table";
+import React, { useCallback } from "react";
+import CustomTable from "@/UI/CustomTable";
+import { Chip, TableColumn } from "@nextui-org/react";
+import ToLocalDateStringShort from "@/Server/Utils/ToLocalDateStringShort";
+import ModalPlacement from "@/UI/ModalPlacement";
+import { BiShow } from "react-icons/bi";
+import { IoCheckmarkCircleSharp } from "react-icons/io5";
+import { RiDraftFill } from "react-icons/ri";
+import ConfirmModal from "@/UI/ConfimModal";
+import { HiOutlineTrash } from "react-icons/hi2";
+import { useRouter } from "next/router";
+import Http from "@/Services/HttpService";
+import DOMPurify from "isomorphic-dompurify";
 
 const ContactUsList = ({contacts}) => {
-    console.log(contacts)
+   const router = useRouter()
+   const AnsweredHandler = async (id) => {
+      await Http.put('/contact/answered' , {id})
+      .then(({data})=> {
+       toast.success(data.message)
+       RouterPush(router)
+      })
+      .catch((err) => {
+       toast.error(err.message)
+      })
+   }
+   const DeleteContactUsHandler = async (id) => {
+     await Http.delete(`/contact/${id}`)
+     .then(({data}) => {
+       toast.success(data.message)
+       RouterPush(router)
+     })
+     .catch((err) => toast.error(err.message))
+   }
+   const renderCell = useCallback((item, columnKey) => {
+      const cellValue = item[columnKey];
+      switch (columnKey) {
+        case "createdDate":
+          return (
+            ToLocalDateStringShort(item.createdAt)
+          );
+        case "name":
+          return (    
+              item.name
+          );
+        case "phone":
+          return (
+             item.phone    
+          );
+          case "body" :
+            return (
+              <ModalPlacement
+            icon={<BiShow className="size-8 fill-sky-500" />}
+            title="متن کامل"
+          >
+              <div
+                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(item.body) }}
+                ></div>
+            {item.body}
+          </ModalPlacement>  
+            );
+         case "answer" :
+            return (
+               item.answer ? (
+                  <Chip
+                    startContent={<IoCheckmarkCircleSharp size={18} />}
+                    variant="faded"
+                    color="success"
+                    className="border border-emerald-500"
+                  >
+                    پاسخ داده شده
+                  </Chip>
+                ) : (
+                  <Chip
+                    startContent={<RiDraftFill size={18} />}
+                    variant="faded"
+                    color="warning"
+                    className="border border-amber-500 cursor-pointer"
+                    onClick={() => AnsweredHandler(item._id)}
+                  >
+                    بی پاسخ
+                  </Chip>
+                )
+            );
+            case "act" :
+            return (
+              <ConfirmModal
+              btnIcon={<HiOutlineTrash className="size-5" />}
+              confirmBtnText="حذف"
+              titleText="حذف پیام"
+              confirmBtnHandler={() => DeleteContactUsHandler(item._id)}
+            >
+             <p className="flex-center gap-1.5"> آیا از حذف پیام کاریز  
+              <span className="text-sky-500">{item.name}</span> مطمعن هستید؟</p>
+            </ConfirmModal>
+            );
+        default:
+          return cellValue;
+      }
+    }, []);
     return ( 
         <DashboardLayout>
         {
-            contacts.length ?  <Table>
-        <Table.Header>
-    <th scope="col" className="py-4.5">
-                ردیف
-            </th>
-            <th scope="col" className="px-6 py-4.5">
-               تاریخ
-            </th>
-            <th scope="col" className="px-6 py-4.5">
-               نام و نام خانوادگی
-            </th>
-            <th scope="col" className="px-6 py-4.5">
-               تلفن تماس
-            </th>
-            <th scope="col" className="px-6 py-4.5">
-               متن کامل
-            </th>
-            <th scope="col" className="px-6 py-4.5">
-               وضعیت پاسخ
-            </th>
-            <th scope="col" className="px-1.5 py-4.5">
-                 عملیات
-            </th>
-    </Table.Header>
-       <Table.Body>
-        {
-            
-            contacts.map((contact , index) => (
-                
-              <React.Fragment key={contact._id}>
-                <ContactUsRow contact={contact} index={index}/>
-              </React.Fragment>  
-            ))
-        }
-       </Table.Body>
-        </Table>:  <Alert alertText="تاکنون پیامی ثبت نگردیده است"/>
+            contacts.length ?  
+            <CustomTable itemsArray={contacts} renderCell={renderCell}>
+                <TableColumn key="createdDate">تاریخ</TableColumn>
+                <TableColumn key="name"> نام و نام خانوادگی</TableColumn>
+                <TableColumn key="phone">  تلفن تماس</TableColumn>
+                <TableColumn key="body"> متن کامل </TableColumn>
+                <TableColumn key="answer">  وضعیت پاسخ</TableColumn>
+                <TableColumn key="act"> عملیات</TableColumn>
+            </CustomTable>
+        :  <Alert alertText="تاکنون پیامی ثبت نگردیده است"/>
         }
         
     </DashboardLayout>
