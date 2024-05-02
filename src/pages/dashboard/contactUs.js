@@ -1,8 +1,6 @@
 import ContactUsList from '@/Features/Dashboard/ContactUs'
-import useTitle from '@/Hooks/useTitle';
 import Http from '@/Services/HttpService';
 const contactUs = ({contacts}) => {
-  const title = useTitle(" پیام ها | کافه رستوران میم")
     return ( 
             <ContactUsList contacts={contacts}/>
      );

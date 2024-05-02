@@ -5,20 +5,18 @@ import AddressMap from "@/UI/AddressMap";
 import ImageMorphing from "@/UI/ImageMorphing";
 import Layout from "@/Containers/Layout";
 import useTitle from "@/Hooks/useTitle";
-import CustomBreadcrumb from "@/UI/CustomBreadcrumb";
 const AboutUs = () => {
   const title = useTitle(" درباره رستوران | کافه رستوران میم")
   return (
     <Layout>
     <section className="container relative mt-6">
-      <CustomBreadcrumb hrefTow="" textTow=" درباره رستوران" />
       <AboutUsItems>
         <div className="max-w-lg space-y-8 mx-auto">
           <AddressItems />
         </div>
       </AboutUsItems>
       <div className="w-full my-12 rounded-lg overflow-hidden">
-        <AddressMap style="h-72" />
+         <AddressMap style="h-72" />
       </div>
     </section>
     </Layout>

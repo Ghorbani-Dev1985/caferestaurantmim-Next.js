@@ -16,9 +16,10 @@ export default Blog;
 
 export async function getStaticPaths(){
   const {data} = await Http.get('/articles');
- const paths = data.map((blog) => {
+  const filteredBlog = data.filter(blog => blog.publish === true);
+ const paths = filteredBlog.map((blog) => {
       return {
-          params: {shortName: `${blog.shortName}`},
+          params: {shortName: `${blog.shortName || ""}`},
       }
   })
   return {
@@ -29,6 +30,6 @@ export async function getStaticPaths(){
   
   export async function getStaticProps({params}) {
     const { data } = await Http.get(`/articles/${params.shortName}`);
-    console.log(data)
+    console.log("Data" , data)
     return { props: { blog: data } , revalidate : 30 };
   }

@@ -9,14 +9,12 @@ import IceCoffee from './IceCoffee';
 import Cake from './Cake';
 import Vafel from './Vafel';
 import Makatel from './Makatel';
-import CustomBreadcrumb from '@/UI/CustomBreadcrumb';
 
 
 const CafeMenu = () => {
   return (
     <>
     <section className='container relative min-h-screen mt-6'>
-    <CustomBreadcrumb hrefTow="" textTow=" کافه رستوران" />
         {/* Top menu */}
      <TopMenu />
      <Coffee />

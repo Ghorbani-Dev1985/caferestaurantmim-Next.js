@@ -2,11 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import RestaurantMenu from "@/Images/Menus/restaurantMenu.webp";
 import CoffeeMenu from "@/Images/Menus/coffeeMenu.webp";
-import CustomBreadcrumb from "@/UI/CustomBreadcrumb";
 const Menus = () => {
     return ( 
         <section className="container mt-6">
-                    <CustomBreadcrumb hrefTow="" textTow="منو ها"/>
         <div className="w-full max-w-4xl flex-col md:flex-row flex-between gap-8 mx-auto">
           <Link href="/RestaurantMenu">
             <Image

@@ -3,13 +3,11 @@ import { HiOutlineCalendar, HiOutlineClock } from "react-icons/hi";
 import Image from 'next/image'
 import ToLocalDateStringShort from "@/Server/Utils/ToLocalDateStringShort";
 import DOMPurify from "isomorphic-dompurify";
-import CustomBreadcrumb from "@/UI/CustomBreadcrumb";
 const Blog = ({blog}) => {
   const {title , cover , createdAt , body} = blog
   const src = `${process.env.NEXT_PUBLIC_DOMAINAPI_URL}${cover}`;
     return ( 
         <section className='container my-8'>
-          <CustomBreadcrumb hrefTow="/articles" textTow="مقاله ها" textThree={title}/>
         <div className='flex flex-col items-center gap-6'>
            <Title text={title}/>
            <Image

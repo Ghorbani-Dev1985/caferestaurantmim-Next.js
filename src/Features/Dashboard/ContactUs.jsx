@@ -13,8 +13,10 @@ import { HiOutlineTrash } from "react-icons/hi2";
 import { useRouter } from "next/router";
 import Http from "@/Services/HttpService";
 import DOMPurify from "isomorphic-dompurify";
+import useTitle from "@/Hooks/useTitle";
 
 const ContactUsList = ({contacts}) => {
+  const title = useTitle(" پیام ها | کافه رستوران میم")
    const router = useRouter()
    const AnsweredHandler = async (id) => {
       await Http.put('/contact/answered' , {id})

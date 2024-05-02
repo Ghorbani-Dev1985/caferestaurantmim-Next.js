@@ -8,7 +8,6 @@ import TextField from "@/UI/TextField";
 import TextAreaField from "@/UI/TextAreaField";
 import Http from "@/Services/HttpService";
 import toast from "react-hot-toast";
-import CustomBreadcrumb from "@/UI/CustomBreadcrumb";
 const ContactUs = () => {
   const {register , formState: {errors} , handleSubmit , reset} = useForm()
   const NewContactUsMsgHandler = (data) => {
@@ -23,8 +22,6 @@ const ContactUs = () => {
   }
     return ( 
         <>
-        <div className="container my-10"> <CustomBreadcrumb hrefTow="" textTow=" ارتباط با ما " />
-        </div>
         <section className='container flex flex-col md:flex-row justify-between gap-12 mt-8'>
         <div className='flex flex-1 flex-col items-center justify-center gap-y-12 border-1 border-gray-200 rounded-lg p-5'>
           <h2 className='font-extrabold text-xl'>ارتباط با رستوران</h2>

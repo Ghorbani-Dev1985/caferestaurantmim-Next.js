@@ -2,7 +2,6 @@ import React from "react";
 import LightBoxModal from "@/UI/LightBoxModal";
 import Title from "@/UI/Title";
 import data from "@/Data/data.json";
-import CustomBreadcrumb from "./CustomBreadcrumb";
 const ImageGallery = ({
   children,
   clickedImg,
@@ -45,7 +44,6 @@ const ImageGallery = ({
   };
   return (
     <>
-     <div className="container my-10"> <CustomBreadcrumb hrefTow="" textTow=" درباره رستوران" /></div>
       <Title text="گالری تصاویر" />
       <div className="container grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
         {children}

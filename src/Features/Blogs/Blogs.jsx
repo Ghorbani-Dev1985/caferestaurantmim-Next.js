@@ -1,6 +1,5 @@
 import React, { useMemo, useState } from "react";
 import BlogsCard from "./BlogCard";
-import CustomBreadcrumb from "@/UI/CustomBreadcrumb";
 import { Pagination } from "@nextui-org/react";
 const Blogs = ({blogs}) => {
   const filteredBlog = blogs.filter(blog => blog.publish === true);
@@ -14,7 +13,7 @@ const Blogs = ({blogs}) => {
    }, [page, filteredBlog]);
   return (
     <section className="container my-8">
-                <CustomBreadcrumb hrefTow="" textTow="مقاله ها" />
+              
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {blog.map((blog) => {
           return (
