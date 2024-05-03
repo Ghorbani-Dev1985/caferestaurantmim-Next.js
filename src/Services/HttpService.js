@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://cafemimapi.liara.run/api"
+export const BASE_URL = "https://cafemimapi.liara.run/api"
 
 const Api = axios.create({
     baseURL: BASE_URL,
@@ -9,10 +9,9 @@ const Api = axios.create({
 Api.interceptors.request.use(
     (config) => {
         const getToken = JSON.parse(typeof window !== "undefined" ? window.localStorage.getItem("user") : false);
-        if (getToken !== null) {
-          config.headers.Authorization = `Bearer ${getToken.accessToken}`;
+          config.headers.Authorization = `Bearer ${getToken?.accessToken}`;
         
-        }
+
         return config;
       },
       (error) => {

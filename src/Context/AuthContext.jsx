@@ -31,7 +31,11 @@ const asyncActionHandlers = {
     
     LOGIN: ({ dispatch }) => (action) => {
         dispatch({type: 'PENDING'})
-        Http.post('/auth/login' , action.payload)
+        Http.post('/auth/login' , action.payload , {
+            headers: {
+                "Content-Type" : "application/json"
+            }
+        })
         .then(({data , status}) => {
             if(status === 200){
                 toast.success("ورود شما با موفقیت انجام شد")
@@ -48,7 +52,7 @@ const asyncActionHandlers = {
     GET_USER_INFOS : ({dispatch}) => async (action) => {
            const getToken = await JSON.parse(typeof window !== "undefined" ? window.localStorage.getItem("user") : false);
             if(getToken) {
-                Http.get('/auth/me' , )
+                Http.get('/auth/me')
                 .then(({data}) => {
                  dispatch({type: 'SUCCESS' , payload: data})
                 })
