@@ -1,12 +1,14 @@
 import Layout from "@/Containers/Layout";
 import MenusFeature from '@/Features/Menus/Menus'
-import useTitle from "@/Hooks/useTitle";
+import SEO from "src/Common/SEO";
 const Menus = () => {
-    const title = useTitle(" منو ها | کافه رستوران میم")
     return ( 
+        <>
+        <SEO title="منو ها | کافه رستوران میم" desc="منوی کافه و رستوران میم"/>
         <Layout>
             <MenusFeature />
         </Layout>
+        </>
      );
 }
  

@@ -3,9 +3,8 @@ import ImageGalleryUi from '@/UI/ImageGallery'
 import data from "@/Data/data.json";
 import Image from "next/image";
 import Layout from '@/Containers/Layout';
-import useTitle from '@/Hooks/useTitle';
+import SEO from 'src/Common/SEO';
 const ImageGallery = () => {
-  const title = useTitle(" گالری تصاویر | کافه رستوران میم")
     const [clickedImg, setClickedImg] = useState(null);
     const [currentIndex, setCurrentIndex] = useState(null);
     const handleClick = (id, href) => {
@@ -13,10 +12,12 @@ const ImageGallery = () => {
       setClickedImg(href);
     };
     return ( 
+      <>
+      <SEO title="گالری تصاویر | کافه و رستوران میم" desc="گالری تصاویر کافه رستوران میم"/>
         <Layout>
         <ImageGalleryUi clickedImg={clickedImg} setClickedImg={setClickedImg} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex}>
         {data.images.map(({ id, href }) => (
-            <React.Fragment key={id}>
+          <React.Fragment key={id}>
              <div className="relative overflow-hidden bg-cover bg-no-repeat cursor-pointer">
                <Image
                width="220"
@@ -34,6 +35,7 @@ const ImageGallery = () => {
            ))}
            </ImageGalleryUi> 
            </Layout>
+           </>
      );
 }
  

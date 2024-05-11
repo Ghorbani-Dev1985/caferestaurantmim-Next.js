@@ -1,13 +1,15 @@
 import Layout from "@/Containers/Layout";
 import BlogsFeature from '@/Features/Blogs/Blogs'
-import useTitle from "@/Hooks/useTitle";
 import Http from "@/Services/HttpService";
+import SEO from "src/Common/SEO";
 const Blogs = ({blogs}) => {
-    const title = useTitle("مقاله ها | کافه رستوران میم")
-    return ( 
+    return (
+        <>
+        <SEO title="مقاله ها | کافه رستوران میم" desc="مقاله های کافه رستوران میم" />
         <Layout>
             <BlogsFeature blogs={blogs}/>
         </Layout>
+        </> 
      );
 }
  

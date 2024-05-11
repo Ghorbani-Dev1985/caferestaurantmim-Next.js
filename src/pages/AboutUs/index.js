@@ -4,10 +4,11 @@ import { AddressItems } from "@/UI/Footer";
 import AddressMap from "@/UI/AddressMap";
 import ImageMorphing from "@/UI/ImageMorphing";
 import Layout from "@/Containers/Layout";
-import useTitle from "@/Hooks/useTitle";
+import SEO from "src/Common/SEO";
 const AboutUs = () => {
-  const title = useTitle(" درباره رستوران | کافه رستوران میم")
   return (
+    <>
+    <SEO title="درباره رستوران | کافه رستوران میم" desc="کافه و رستـوران میم میم یکی از کافه و رستوران رشت شما را به صرف غذاهای خاص دعوت می کند. ما در میم بر لذت بردن از مزه ها در فضایی که لحظه های به یاد ماندنی می سازد تاکید داریم و از این رو نام میم را که لذت میل کردن، نوشیدن و زندگی [&hellip;]" />
     <Layout>
     <section className="container relative mt-6">
       <AboutUsItems>
@@ -20,6 +21,7 @@ const AboutUs = () => {
       </div>
     </section>
     </Layout>
+    </>
   );
 };
 

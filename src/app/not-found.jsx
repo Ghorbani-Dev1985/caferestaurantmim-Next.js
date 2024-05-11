@@ -8,7 +8,7 @@ const NotFound = () => {
             <Image
               width="600"
               height="600"
-              priority
+              layout="intrinsic"
               placeholder="blur"
               blurDataURL="/NotFound/NotFound.svg"
               alt="ghorbani-dev.ir"

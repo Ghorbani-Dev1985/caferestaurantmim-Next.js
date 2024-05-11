@@ -7,10 +7,11 @@ import ImageGallery from "@/Features/Home/ImageGallery";
 import { AboutUsItems } from "./AboutUs";
 import Layout from "@/Containers/Layout";
 import Http from "@/Services/HttpService";
-import useTitle from "@/Hooks/useTitle";
+import SEO from "src/Common/SEO";
 const HomePage = ({blogs}) => {
-    const title = useTitle(" کافه رستوران میم")
     return (
+        <>
+        <SEO title="کافه و رستوران میم | Cafe Restaurant mim" desc="کافه و رستوران میم با محیطی زیبا در خیابان لاکانی رشت آماده پذیرایی شما عزیزان می باشد ، امیدواریم لحظات خوبی را کنار هم داشته باشیم" />
         <Layout>
         <main className='min-h-screen'>
         <Slider />
@@ -24,6 +25,7 @@ const HomePage = ({blogs}) => {
          <ImageGallery />
         </main>
         </Layout>
+        </>
      );
 }
  
