@@ -9,13 +9,14 @@ const PreFooter = () => {
       <div className="bg-paternBg flex-center mt-16">
         <Image
           alt="ghorbani-dev.ir"
+          placeholder="blur"
           src={TopPreFooter}
           className="object-fill rounded-none"
         />
       </div>
       <div className="bg-primary p-12">
         <div className="container flex flex-col items-center gap-y-8 font-bold">
-          <h3 className="font-extrabold text-2xl">
+          <h3 className="font-extrabold md:text-2xl">
             ساعات فعالیت کافه رستوران میم
           </h3>
           <p className="flex-center gap-1">

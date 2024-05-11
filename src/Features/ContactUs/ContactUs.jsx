@@ -29,6 +29,7 @@ const ContactUs = () => {
           width="110"
           height="25"
           alt="ghorbani-dev.ir"
+          placeholder="blur"
           src={DividerImg}
           className='object-fill'
           />

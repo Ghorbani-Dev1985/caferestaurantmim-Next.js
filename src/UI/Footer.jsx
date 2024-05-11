@@ -13,6 +13,7 @@ const Footer = () => {
           <div className="absolute z-20 -top-[4.3rem]">
             <Image
               alt="ghorbani-dev.ir"
+              placeholder="blur"
               src={TopFooter}
               className="object-fill rounded-none"
             />
@@ -20,6 +21,7 @@ const Footer = () => {
 
           <Image
             alt="ghorbani-dev.ir"
+            placeholder="blur"
             src={Logo}
             className="object-fill rounded-none mt-6"
           />

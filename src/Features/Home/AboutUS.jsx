@@ -9,6 +9,7 @@ const AboutUS = () => {
       <div className="bg-paternBg flex-center mt-16">
         <Image
           alt="ghorbani-dev.ir"
+          placeholder="blur"
           src={AboutUsTopImg}
           className="object-fill rounded-none"
         />
@@ -48,6 +49,7 @@ const AboutUS = () => {
         <div className="flex">
           <Image
             alt="ghorbani-dev.ir"
+            placeholder="blur"
             src={ChefImg}
             className="object-fill mb-8 md:mb-0"
           />
@@ -55,6 +57,7 @@ const AboutUS = () => {
         <div className="absolute flex-center bottom-0 right-0 left-0 z-20 mx-auto">
           <Image
             alt="ghorbani-dev.ir"
+            placeholder="blur"
             src={AboutUsButtonImg}
             className="object-fill rounded-none "
           />

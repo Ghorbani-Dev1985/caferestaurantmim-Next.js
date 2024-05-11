@@ -10,6 +10,8 @@ const MenuItemsCard = ({ src, title, price, subTitle }) => {
             width={171}
             height={171}
             alt="ghorbani-dev.ir"
+            placeholder="blur"
+            blurDataURL={src}
             src={src}
             className="size-20 md:size-32 object-fill rounded-tl-[50px] rounded-tr-[50px] rounded-br-[150px] rounded-bl-[50px]"
           />

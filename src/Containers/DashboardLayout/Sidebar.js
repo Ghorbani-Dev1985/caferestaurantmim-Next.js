@@ -37,6 +37,7 @@ const Sidebar = () => {
           width={279}
           height={279}
           alt="ghorbani-dev.ir"
+          placeholder="blur"
           src={Logo}
           className="object-fill rounded-xl"
         />

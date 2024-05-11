@@ -11,6 +11,7 @@ const Menus = () => {
               width={385}
               height={385}
               alt="ghorbani-dev.ir"
+              placeholder="blur"
               src={RestaurantMenu}
               className="object-fill rounded-lg hover:scale-90 hover:opacity-80 transition-all ease-linear duration-250"
             />
@@ -20,6 +21,7 @@ const Menus = () => {
               width={385}
               height={385}
               alt="ghorbani-dev.ir"
+              placeholder="blur"
               src={CoffeeMenu}
               className="object-fill rounded-lg hover:scale-90 hover:opacity-80 transition-all ease-linear duration-250"
             />

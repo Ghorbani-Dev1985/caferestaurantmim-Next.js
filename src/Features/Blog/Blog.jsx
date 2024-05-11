@@ -14,6 +14,8 @@ const Blog = ({blog}) => {
             width={512}
             height={512}
             alt="ghorbani-dev.ir"
+            placeholder="blur"
+            blurDataURL={src}
             src={src}
             className="object-fill rounded-xl max-w-full"
           />

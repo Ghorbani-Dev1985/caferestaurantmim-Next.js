@@ -72,6 +72,8 @@ const Slider = () => {
               height="700"
               priority
               alt="ghorbani-dev.ir"
+              placeholder="blur"
+              blurDataURL={href}
               src={href}
               className="object-fill rounded-none"
             />

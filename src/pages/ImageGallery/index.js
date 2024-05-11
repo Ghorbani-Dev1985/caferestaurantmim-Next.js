@@ -22,6 +22,8 @@ const ImageGallery = () => {
                width="220"
                height="220"
                alt="ghorbani-dev.ir"
+               placeholder='blur'
+               blurDataURL={href}
                src={href}
                className="object-fill size-[220px] rounded-lg"
                />

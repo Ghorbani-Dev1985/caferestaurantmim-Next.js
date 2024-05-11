@@ -12,6 +12,8 @@ const BlogsCard = ({blog}) => {
           width={279}
           height={279}
           alt="ghorbani-dev.ir"
+          placeholder="blur"
+          blurDataURL={src}
           src={src}     
           className="object-fill rounded-xl"
         />

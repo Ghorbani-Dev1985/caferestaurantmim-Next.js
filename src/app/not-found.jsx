@@ -9,6 +9,8 @@ const NotFound = () => {
               width="600"
               height="600"
               priority
+              placeholder="blur"
+              blurDataURL="/NotFound/NotFound.svg"
               alt="ghorbani-dev.ir"
               src="/NotFound/NotFound.svg"
               className="object-fill rounded-none"

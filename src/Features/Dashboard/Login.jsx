@@ -35,6 +35,8 @@ const LoginPage = () => {
             width={250}
             height={110}
             alt="ghorbani-dev.ir"
+            placeholder="blur"
+            blurDataURL="/Logo/logo2.webp"
             src="/Logo/logo2.webp"
             className="object-cover mb-3"
           />

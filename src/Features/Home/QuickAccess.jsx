@@ -77,6 +77,8 @@ function QuickAccess() {
                 width={512}
                 height={512}
                 alt="ghorbani-dev.ir"
+                placeholder="blur"
+                blurDataURL={`/RestaurantMenu/${src}`}
                 src={`/RestaurantMenu/${src}`}
                 className="object-fill hover:scale-90 hover:opacity-80 transition-all ease-linear duration-250"
               />
