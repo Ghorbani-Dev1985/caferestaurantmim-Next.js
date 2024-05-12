@@ -1,3 +1,4 @@
+'use client';
 import React, { useMemo, useState } from "react";
 import BlogsCard from "./BlogCard";
 import { Pagination } from "@nextui-org/react";

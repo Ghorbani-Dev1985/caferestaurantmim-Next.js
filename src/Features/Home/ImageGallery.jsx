@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from "react";
 import ImageGalleryUi from "@/UI/ImageGallery";
 import data from "@/Data/data.json";

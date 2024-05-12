@@ -1,10 +1,10 @@
+"use client";
 import React, { useState } from "react";
 import {
   Navbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  NavbarMenuToggle,
   NavbarMenu,
   Divider,
 } from "@nextui-org/react";
@@ -14,11 +14,11 @@ import { BiLogoInstagram, BiMenuAltRight } from "react-icons/bi";
 import Link from "next/link";
 import Image from "next/image";
 import { BiCircle } from "react-icons/bi";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { pathname } = useRouter();
-  
+  const pathname = usePathname();
+  console.log(pathname)
   const menuItems = [
     {
       id: 1,
@@ -28,27 +28,27 @@ const Header = () => {
     {
       id: 2,
       title: "درباره رستوران",
-      link: "/AboutUs",
+      link: "/aboutUs",
     },
     {
       id: 3,
       title: "رستوران میم",
-      link: "/RestaurantMenu",
+      link: "/restaurantMenu",
     },
     {
       id: 4,
       title: "کافه میم",
-      link: "/CafeMenu",
+      link: "/cafeMenu",
     },
     {
       id: 5,
       title: "گالری",
-      link: "/ImageGallery",
+      link: "/imageGallery",
     },
     {
       id: 6,
       title: "ارتباط با ما",
-      link: "/ContactUs",
+      link: "/contactUs",
     },
   ];
   return (
@@ -134,7 +134,7 @@ const Header = () => {
         <NavbarContent justify="end">
           <NavbarItem>
             <Link
-              href="/Menus"
+              href="/menus"
               className="flex justify-normal items-center gap-1 bg-primary hover:bg-primary-300 text-white cursor-pointer px-9 py-1.5 rounded-full transition-colors"
             >
               <BiCircle /> منوها

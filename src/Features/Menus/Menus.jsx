@@ -6,7 +6,7 @@ const Menus = () => {
     return ( 
         <section className="container mt-6">
         <div className="w-full max-w-4xl flex-col md:flex-row flex-between gap-8 mx-auto">
-          <Link href="/RestaurantMenu">
+          <Link href="/restaurantMenu">
             <Image
               width={385}
               height={385}
@@ -16,7 +16,7 @@ const Menus = () => {
               className="object-fill rounded-lg hover:scale-90 hover:opacity-80 transition-all ease-linear duration-250"
             />
           </Link>
-          <Link href="/CafeMenu">
+          <Link href="/cafeMenu">
             <Image
               width={385}
               height={385}

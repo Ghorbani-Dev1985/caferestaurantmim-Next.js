@@ -1,11 +1,10 @@
 import Image from "next/image";
 import React from "react";
-import DividerImg from "@/Images/Main/title.webp";
 const Title = ({ text }) => {
   return (
     <section className="container flex flex-col items-center my-8">
       <h2 className="text-2xl font-extrabold mb-4">{text}</h2>
-      <Image alt="ghorbani-dev.ir" placeholder="blur" src={DividerImg} className="object-fill" />
+      <Image alt="ghorbani-dev.ir" placeholder="blur" blurDataURL="/Main/title.webp" src="/Main/title.webp" width={110} height={25}/>
     </section>
   );
 };

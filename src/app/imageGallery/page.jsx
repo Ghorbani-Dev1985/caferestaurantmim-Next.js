@@ -1,8 +1,8 @@
+'use client';
 import React, { useState } from 'react';
 import ImageGalleryUi from '@/UI/ImageGallery'
 import data from "@/Data/data.json";
 import Image from "next/image";
-import Layout from '@/Containers/Layout';
 import SEO from 'src/Common/SEO';
 const ImageGallery = () => {
     const [clickedImg, setClickedImg] = useState(null);
@@ -14,7 +14,6 @@ const ImageGallery = () => {
     return ( 
       <>
       <SEO title="گالری تصاویر | کافه و رستوران میم" desc="گالری تصاویر کافه رستوران میم"/>
-        <Layout>
         <ImageGalleryUi clickedImg={clickedImg} setClickedImg={setClickedImg} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex}>
         {data.images.map(({ id, href }) => (
           <React.Fragment key={id}>
@@ -34,7 +33,6 @@ const ImageGallery = () => {
              </React.Fragment>
            ))}
            </ImageGalleryUi> 
-           </Layout>
            </>
      );
 }
