@@ -7,14 +7,13 @@ const Sitemap = () => {
 export default Sitemap;
  
 export const getServerSideProps = async ({ res }) => {
-    const BASE_URL = 'https://cafemim.ghorbani-dev.ir';
+    const BASE_URL = 'http://localhost:3000';
 
     const staticPaths = fs
-    .readdirSync("src/pages")
+    .readdirSync("src/app")
     .filter((staticPage) => {
       return ![
         "api",
-        "src/app",
         "dashboard",
         "_app.js",
         "_document.js",

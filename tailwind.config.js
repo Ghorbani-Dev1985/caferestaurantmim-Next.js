@@ -38,8 +38,8 @@ module.exports = {
            error: 'rgb(255,71 , 87)',
        },
        fontFamily: {
-        ShabnamFD: ["Shabnam-FD" , "sans-serif"],
-        Shabnam: ["Shabnam" , "sans-serif"],
+        ShabnamFD: ["var(--font-shabnamFD)"],
+        Shabnam: ["var(--font-shabnam)"],
       },
       backgroundImage: {
         'paternBg' : 'url("/Footer/footerPatern.png")',
