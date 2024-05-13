@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -5,7 +6,7 @@ import Logo from "@/Images/Logo/logo2.webp";
 import { Divider } from "@nextui-org/react";
 import { BiEnvelopeOpen, BiListPlus } from "react-icons/bi";
 import { HiOutlineNewspaper } from "react-icons/hi";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 
 export const NavlinkItems = [
   {
@@ -29,7 +30,7 @@ export const NavlinkItems = [
 ];
 
 const Sidebar = () => {
-  const { pathname } = useRouter();
+  const pathname = usePathname();
   return (
     <section className="hidden md:flex flex-col items-center p-6">
       <Link href="/">

@@ -4,7 +4,7 @@ import Slider from "@/UI/Slider";
 import AboutUS from "@/Features/Home/AboutUS";
 import BlogsList from "@/Features/Home/BlogsList";
 import ImageGallery from "@/Features/Home/ImageGallery";
-import { AboutUsItems } from "../app/aboutUs/page";
+import { AboutUsItems } from "../app/(users)/aboutUs/page";
 import Layout from "@/Containers/Layout";
 import Http from "@/Services/HttpService";
 import SEO from "src/Common/SEO";

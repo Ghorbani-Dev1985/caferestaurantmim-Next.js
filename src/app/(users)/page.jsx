@@ -10,7 +10,7 @@ import { AboutUsItems } from "./aboutUs/page";
 
 export async function getBlogs() {
   const { data } = await Http.get("/articles");
-  const filteredBlog = data.filter(blog => blog.publish === true);
+  const filteredBlog = data.filter((blog) => blog.publish === true);
   return filteredBlog;
 }
 
@@ -38,4 +38,3 @@ const HomePage = async () => {
 };
 
 export default HomePage;
-

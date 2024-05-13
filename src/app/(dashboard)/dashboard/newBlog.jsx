@@ -4,9 +4,7 @@ import useTitle from "@/Hooks/useTitle";
 const NewBlog = () => {
     const title = useTitle("افزودن مقاله | کافه رستوران میم ")
     return ( 
-        <DashboardLayout>
             <NewBlogFeature />
-        </DashboardLayout>
      );
 }
  
