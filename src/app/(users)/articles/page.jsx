@@ -1,14 +1,12 @@
 import BlogsFeature from '@/Features/Blogs/Blogs'
-import SEO from "src/Common/SEO";
 import { getBlogs } from "../page";
+export const metadata = {
+    title: "مقاله ها | کافه رستوران میم",
+    description: "مقاله های کافه رستوران میم"
+   }
 const Blogs = async() => {
     const blogs = await getBlogs();
-    return (
-        <>
-        <SEO title="مقاله ها | کافه رستوران میم" desc="مقاله های کافه رستوران میم" />
-            <BlogsFeature blogs={blogs}/>
-        </> 
-     );
+    return <BlogsFeature blogs={blogs}/>
 }
  
 export default Blogs;

@@ -3,11 +3,12 @@ import AboutUsImg from "@/Images/Other/aboutUs.webp";
 import { AddressItems } from "@/UI/Footer";
 import AddressMap from "@/UI/AddressMap";
 import ImageMorphing from "@/UI/ImageMorphing";
-import SEO from "src/Common/SEO";
+export const metadata = {
+  title: "درباره رستوران | کافه رستوران میم",
+  description: "کافه و رستـوران میم میم یکی از کافه و رستوران رشت شما را به صرف غذاهای خاص دعوت می کند. ما در میم بر لذت بردن از مزه ها در فضایی که لحظه های به یاد ماندنی می سازد تاکید داریم و از این رو نام میم را که لذت میل کردن، نوشیدن و زندگی [&hellip;]"
+ }
 const AboutUs = () => {
   return (
-    <>
-    <SEO title="درباره رستوران | کافه رستوران میم" desc="کافه و رستـوران میم میم یکی از کافه و رستوران رشت شما را به صرف غذاهای خاص دعوت می کند. ما در میم بر لذت بردن از مزه ها در فضایی که لحظه های به یاد ماندنی می سازد تاکید داریم و از این رو نام میم را که لذت میل کردن، نوشیدن و زندگی [&hellip;]" />
     <section className="container relative mt-6">
       <AboutUsItems>
         <div className="max-w-lg space-y-8 mx-auto">
@@ -18,7 +19,6 @@ const AboutUs = () => {
          <AddressMap style="h-72" />
       </div>
     </section>
-    </>
   );
 };
 

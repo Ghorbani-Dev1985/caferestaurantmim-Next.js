@@ -3,7 +3,10 @@ import React, { useState } from 'react';
 import ImageGalleryUi from '@/UI/ImageGallery'
 import data from "@/Data/data.json";
 import Image from "next/image";
-import SEO from 'src/Common/SEO';
+export const metadata = {
+  title: "گالری تصاویر | کافه و رستوران میم",
+  description: "پیش غذا سوپ قارچ و مرغ 80,000 تومان فیله مرغ،قارچ،پیاز،سیر،خامه،شیر،نشاسته،جعفری،لیموترش نان سیر 150,000 تومان خمیر پیتزا،پنیر میکس،سس سیر،تخمه آفتابگردان،جعفری ساطوری،سس آیولی فرنچ فرایز 95,000 تومان سیب زمینی مزه دار شده،سس فرانسوی مخصوص وایت فرایز 180,000 تومان سیب زمینی مزه دار شده،سس قارچ،سس دیپ پنیر،پودر پنیر پارمسان مزرعه سیب زمینی 190,000 تومان سیب زمینی سرخ شده،ژامبون [&hellip;]"
+ }
 const ImageGallery = () => {
     const [clickedImg, setClickedImg] = useState(null);
     const [currentIndex, setCurrentIndex] = useState(null);
@@ -13,7 +16,6 @@ const ImageGallery = () => {
     };
     return ( 
       <>
-      <SEO title="گالری تصاویر | کافه و رستوران میم" desc="گالری تصاویر کافه رستوران میم"/>
         <ImageGalleryUi clickedImg={clickedImg} setClickedImg={setClickedImg} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex}>
         {data.images.map(({ id, href }) => (
           <React.Fragment key={id}>
