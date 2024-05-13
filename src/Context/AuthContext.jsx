@@ -1,19 +1,16 @@
+"use client"
 import Http from "@/Services/HttpService";
-import Router from "next/router";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect } from "react";
 import toast from "react-hot-toast";
+import RedirectLink from "src/common/RedirectLink";
 import { useReducerAsync } from "use-reducer-async";
-
 const AuthContext = createContext()
-
 const AuthContextDispatcher = createContext();
-
 const InitialState = {
   user: null,
   loading: false,
   error: null
 }
-
 const reducer = (state , action) => {
     
   switch (action.type) {
@@ -28,10 +25,9 @@ const reducer = (state , action) => {
 }
 
 const asyncActionHandlers = {
-    
-    LOGIN: ({ dispatch }) => (action) => {
+    LOGIN: ({ dispatch }) => async (action) => {
         dispatch({type: 'PENDING'})
-        Http.post('/auth/login' , action.payload , {
+       await Http.post('/auth/login' , action.payload , {
             headers: {
                 "Content-Type" : "application/json"
             }
@@ -39,9 +35,9 @@ const asyncActionHandlers = {
         .then(({data , status}) => {
             if(status === 200){
                 toast.success("ورود شما با موفقیت انجام شد")
-                localStorage.setItem('user' , JSON.stringify(data))
-                dispatch({type: 'SUCCESS'})
-                Router.replace("dashboard/blogs")
+                dispatch({type: 'SUCCESS' , payload:data})
+                localStorage.setItem('user' , JSON.stringify(data));
+                <RedirectLink link="dashboard"/>
             }
         })
         .catch((err) => {
@@ -63,10 +59,9 @@ const asyncActionHandlers = {
     },
 
     LOGOUT: ({dispatch}) => (action) =>{
-        typeof localStorage.removeItem('user')
-        toast.success("خروج با موفقیت انجام شد")
-        dispatch({type: 'SUCCESS'})
-        Router.replace('/')
+         typeof localStorage.removeItem('user')
+         toast.success("خروج با موفقیت انجام شد");
+        window.location.href = "/";
     },
   };
 

@@ -13,19 +13,19 @@ export const NavlinkItems = [
     id: 1,
     title: "مقاله ها",
     icon: <HiOutlineNewspaper />,
-    link: "/dashboard/blogs",
+    link: "/dashboard",
   },
   {
     id: 2,
     title: " افزودن مقاله",
     icon: <BiListPlus />,
-    link: "/dashboard/NewBlog",
+    link: "/newBlog",
   },
   {
     id: 3,
     title: "پیام‌ها",
     icon: <BiEnvelopeOpen />,
-    link: "/dashboard/contactUs",
+    link: "/contactUsList",
   },
 ];
 

@@ -1,19 +1,18 @@
+"use client"
 import useTitle from "@/Hooks/useTitle";
 import Loading from "@/UI/Loading";
 import TextField from "@/UI/TextField";
 import { Button } from "@nextui-org/react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import { useAuth, useAuthActions } from "src/Context/AuthContext";
 
 const LoginPage = () => {
   const title = useTitle(" ورود به حساب کاربری | کافه رستوران میم");
-  const router = useRouter();
   const dispatch = useAuthActions();
-  // const { loading , user} = useAuth();
+  const { loading} = useAuth();
   const [isShowPassword, setIsShowPassword] = useState(false);
   const {
     register,
@@ -23,10 +22,6 @@ const LoginPage = () => {
   const LoginHandler = async (data) => {
     dispatch({ type: "LOGIN", payload: data });
   };
-
-  //   useEffect(() => {
-  //     if(user) router.push("/dashboard/blogs")
-  //  },[])
   return (
     <main className="w-full h-screen bg-gradient-to-t from-primary-500 to-primary-50">
       <section className="container h-screen flex-center">
@@ -106,7 +101,7 @@ const LoginPage = () => {
                 )}
               </button>
             </TextField>
-            {/* {loading ? (
+            {loading ? (
           <Loading />
         ) : (
           <div>
@@ -118,7 +113,7 @@ const LoginPage = () => {
             ورود به حساب کاربری
           </Button>
           </div>
-        )} */}
+        )}
           </form>
          
         </div>

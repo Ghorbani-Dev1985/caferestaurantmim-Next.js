@@ -1,9 +1,9 @@
-import DashboardLayout from "@/Containers/DashboardLayout";
+"use client"
 import React, { useCallback } from "react";
 import Alert from "@/UI/Alert";
 import { TableColumn, Chip } from "@nextui-org/react";
 import Http from "@/Services/HttpService";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import RouterPush from "@/Hooks/RouterPush";
 import Image from "next/image";
 import ModalPlacement from "@/UI/ModalPlacement";
@@ -12,11 +12,13 @@ import DOMPurify from "isomorphic-dompurify";
 import { IoCheckmarkCircleSharp } from "react-icons/io5";
 import { RiDraftFill } from "react-icons/ri";
 import ConfirmModal from "@/UI/ConfimModal";
-import { HiOutlineTrash } from "react-icons/hi2";
+import { BiTrash } from "react-icons/bi";
 import toast from "react-hot-toast";
 import CustomTable from "@/UI/CustomTable";
+import useTitle from "@/Hooks/useTitle";
 
 const BlogsList = ({ blogsList }) => {
+  const title = useTitle("مقاله ها | کافه رستوران میم")
   const router = useRouter();
   const PublishBlogHandler = async (id) => {
     await Http.put("/articles", { id })
@@ -100,13 +102,12 @@ const BlogsList = ({ blogsList }) => {
       case "act":
         return (
           <ConfirmModal
-            btnIcon={<HiOutlineTrash className="size-5" />}
+            btnIcon={<BiTrash className="size-5" />}
             confirmBtnText="حذف"
             titleText="حذف مقاله"
             confirmBtnHandler={() => DeleteBlogHandler(item._id)}
           >
             <p className="flex-center gap-1.5">
-              {" "}
               آیا از حذف مقاله با عنوان
               <span className="text-sky-500">{item.title}</span> مطمعن هستید؟
             </p>
@@ -117,8 +118,7 @@ const BlogsList = ({ blogsList }) => {
     }
   }, []);
   return (
-    <DashboardLayout>
-      {blogsList.length ? (
+      blogsList.length ? (
         <CustomTable itemsArray={blogsList} renderCell={renderCell}>
           <TableColumn key="cover">تصویر</TableColumn>
           <TableColumn key="title">عنوان</TableColumn>
@@ -130,8 +130,7 @@ const BlogsList = ({ blogsList }) => {
         </CustomTable>
       ) : (
         <Alert alertText="تاکنون مقاله ای ثبت نگردیده است" />
-      )}
-    </DashboardLayout>
+      )
   );
 };
 

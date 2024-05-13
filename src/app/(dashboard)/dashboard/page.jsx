@@ -1,10 +1,21 @@
-"use client"
-import LoginPage from "@/Features/Dashboard/Login";
-import useTitle from "@/Hooks/useTitle";
+import BlogsList from '@/Features/Dashboard/Blogs' 
+import Http from '@/Services/HttpService';
 
-const Login = () => {
-   const title = useTitle(" ورود | کافه رستوران میم");
- return <LoginPage />
+export async function getBlogs() {
+  const { data : blogs } = await Http.get("/articles");
+  return blogs;
+}
+const Blogs = async() => {
+   const blogs = await getBlogs();
+  //  const router = useRouter();
+  //  const { user} = useAuth();
+  //  useEffect(() => {
+  //    if(!user) router.push("login")
+  // },[])
+    return ( 
+       <BlogsList blogsList={blogs}/>
+     );
 }
  
-export default Login;
+export default Blogs;
+

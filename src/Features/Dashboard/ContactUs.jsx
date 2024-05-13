@@ -1,4 +1,4 @@
-import DashboardLayout from "@/Containers/DashboardLayout";
+"use client"
 import Alert from "@/UI/Alert";
 import React, { useCallback } from "react";
 import CustomTable from "@/UI/CustomTable";
@@ -9,8 +9,8 @@ import { BiShow } from "react-icons/bi";
 import { IoCheckmarkCircleSharp } from "react-icons/io5";
 import { RiDraftFill } from "react-icons/ri";
 import ConfirmModal from "@/UI/ConfimModal";
-import { HiOutlineTrash } from "react-icons/hi2";
-import { useRouter } from "next/router";
+import { BiTrash } from "react-icons/bi";
+import { useRouter } from "next/navigation";
 import Http from "@/Services/HttpService";
 import DOMPurify from "isomorphic-dompurify";
 import useTitle from "@/Hooks/useTitle";
@@ -89,7 +89,7 @@ const ContactUsList = ({contacts}) => {
             case "act" :
             return (
               <ConfirmModal
-              btnIcon={<HiOutlineTrash className="size-5" />}
+              btnIcon={<BiTrash className="size-5" />}
               confirmBtnText="حذف"
               titleText="حذف پیام"
               confirmBtnHandler={() => DeleteContactUsHandler(item._id)}
@@ -103,8 +103,6 @@ const ContactUsList = ({contacts}) => {
       }
     }, []);
     return ( 
-        <DashboardLayout>
-        {
             contacts.length ?  
             <CustomTable itemsArray={contacts} renderCell={renderCell}>
                 <TableColumn key="createdDate">تاریخ</TableColumn>
@@ -115,10 +113,6 @@ const ContactUsList = ({contacts}) => {
                 <TableColumn key="act"> عملیات</TableColumn>
             </CustomTable>
         :  <Alert alertText="تاکنون پیامی ثبت نگردیده است"/>
-        }
-        
-    </DashboardLayout>
-   
      );
 }
  

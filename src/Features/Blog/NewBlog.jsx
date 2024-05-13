@@ -1,3 +1,4 @@
+"use client"
 import Fieldset from "@/UI/Fieldset";
 import TextField from "@/UI/TextField";
 import { Button } from "@nextui-org/react";
@@ -9,6 +10,7 @@ import "react-quill/dist/quill.snow.css";
 import Http from "@/Services/HttpService";
 import TextAreaField from "@/UI/TextAreaField";
 import toast from "react-hot-toast";
+import useTitle from "@/Hooks/useTitle";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 const modules = {
@@ -48,6 +50,7 @@ const formats = [
   "video",
 ];
 const NewBlog = () => {
+  const title = useTitle("افزودن مقاله | کافه رستوران میم ")
   const {
     register,
     formState: { errors },

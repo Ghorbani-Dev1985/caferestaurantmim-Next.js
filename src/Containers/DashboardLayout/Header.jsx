@@ -1,4 +1,3 @@
-"use client";
 import React, { useState } from "react";
 import {
   Button,
@@ -9,7 +8,7 @@ import {
   NavbarMenu,
 } from "@nextui-org/react";
 import { useAuth, useAuthActions } from "src/Context/AuthContext";
-import { HiArrowLeftStartOnRectangle } from "react-icons/hi2";
+import { BiLogOut } from "react-icons/bi";
 import { BiMenuAltRight } from "react-icons/bi";
 import Link from "next/link";
 import { NavlinkItems } from "./Sidebar";
@@ -17,7 +16,7 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 
 const Header = () => {
-  //  const { user} = useAuth();
+   const { user} = useAuth();
   const dispatch = useAuthActions();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
@@ -79,10 +78,10 @@ const Header = () => {
           </NavbarMenu>
         )}
       </Navbar>
-      {/* <p className="flex-center flex-wrap gap-2">کاربر گرامی ؛<span className="block text-emerald-500 font-extrabold">{user?.name}</span>به پنل کاربری خوش آمدید</p>
-           <Button onPress={() => dispatch({ type: "LOGOUT"})} color="danger" variant="light" startContent={<HiArrowLeftStartOnRectangle className="size-5"/>}>
+      <p className="flex-center flex-wrap gap-2">کاربر گرامی ؛<span className="block text-emerald-500 font-extrabold">{user?.name}</span>به پنل کاربری خوش آمدید</p>
+           <Button onPress={() => dispatch({ type: "LOGOUT"})} color="danger" variant="light" startContent={<BiLogOut className="size-5"/>}>
         خروج از حساب 
-              </Button> */}
+              </Button>
     </section>
   );
 };
