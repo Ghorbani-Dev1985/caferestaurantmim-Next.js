@@ -16,9 +16,11 @@ import { BiTrash } from "react-icons/bi";
 import toast from "react-hot-toast";
 import CustomTable from "@/UI/CustomTable";
 import useTitle from "@/Hooks/useTitle";
+import useProtectRoute from "@/Hooks/useProtectRoute";
 
 const BlogsList = ({ blogsList }) => {
-  const title = useTitle("مقاله ها | کافه رستوران میم")
+  const title = useTitle("مقاله ها | کافه رستوران میم");
+  const protect = useProtectRoute()
   const router = useRouter();
   const PublishBlogHandler = async (id) => {
     await Http.put("/articles", { id })

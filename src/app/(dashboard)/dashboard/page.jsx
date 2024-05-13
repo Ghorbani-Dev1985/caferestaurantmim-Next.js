@@ -7,11 +7,6 @@ export async function getBlogs() {
 }
 const Blogs = async() => {
    const blogs = await getBlogs();
-  //  const router = useRouter();
-  //  const { user} = useAuth();
-  //  useEffect(() => {
-  //    if(!user) router.push("login")
-  // },[])
     return ( 
        <BlogsList blogsList={blogs}/>
      );

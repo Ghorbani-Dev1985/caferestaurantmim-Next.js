@@ -11,6 +11,7 @@ import Http from "@/Services/HttpService";
 import TextAreaField from "@/UI/TextAreaField";
 import toast from "react-hot-toast";
 import useTitle from "@/Hooks/useTitle";
+import useProtectRoute from "@/Hooks/useProtectRoute";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 const modules = {
@@ -50,7 +51,8 @@ const formats = [
   "video",
 ];
 const NewBlog = () => {
-  const title = useTitle("افزودن مقاله | کافه رستوران میم ")
+  const title = useTitle("افزودن مقاله | کافه رستوران میم ");
+  const protect = useProtectRoute()
   const {
     register,
     formState: { errors },

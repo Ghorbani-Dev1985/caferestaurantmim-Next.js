@@ -14,9 +14,11 @@ import { useRouter } from "next/navigation";
 import Http from "@/Services/HttpService";
 import DOMPurify from "isomorphic-dompurify";
 import useTitle from "@/Hooks/useTitle";
+import useProtectRoute from "@/Hooks/useProtectRoute";
 
 const ContactUsList = ({contacts}) => {
-  const title = useTitle(" پیام ها | کافه رستوران میم")
+  const title = useTitle(" پیام ها | کافه رستوران میم");
+  const protect = useProtectRoute()
    const router = useRouter()
    const AnsweredHandler = async (id) => {
       await Http.put('/contact/answered' , {id})
